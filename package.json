@@ -1,9 +1,18 @@
 {
-  "name": "root",
+  "name": "elementor-editor-packages",
+  "description": "Packages for elementor editor",
   "private": true,
   "scripts": {
     "test:unit": "jest --config='./test/unit/jest.config.js'"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementor/elementor-editor-packages"
+  },
+  "bugs": {
+    "url": "https://github.com/elementor/elementor-editor-packages/issues"
+  },
+  "homepage": "https://github.com/elementor/elementor-editor-packages",
   "devDependencies": {
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.0.4",
@@ -23,5 +32,8 @@
     "hooks": {
       "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
     }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
   }
 }

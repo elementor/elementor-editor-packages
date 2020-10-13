@@ -6,6 +6,9 @@
   "homepage": "",
   "license": "ISC",
   "main": "build/index.js",
+  "scripts": {
+    "build": "rm -rf ./build && mkdir ./build && cp -R ./src/**/* ./build/"
+  },
   "peerDependencies": {
     "react": "^16.8.0",
     "react-dom": "^16.8.0"
