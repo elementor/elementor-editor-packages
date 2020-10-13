@@ -1,0 +1,16 @@
+{
+  "name": "@elementor/ui",
+  "version": "0.0.1",
+  "description": "Elementor UI library",
+  "author": "Elementor Team",
+  "homepage": "",
+  "license": "ISC",
+  "main": "build/index.js",
+  "peerDependencies": {
+    "react": "^16.8.0",
+    "react-dom": "^16.8.0"
+  },
+  "dependencies": {
+    "prop-types": "^15.7.2"
+  }
+}
