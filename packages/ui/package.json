@@ -5,6 +5,14 @@
   "author": "Elementor Team",
   "homepage": "",
   "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementor/elementor-editor-packages",
+    "directory": "packages/ui"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
   "main": "build/index.js",
   "scripts": {
     "build": "rm -rf ./build && mkdir ./build && cp -R ./src/**/* ./build/"
