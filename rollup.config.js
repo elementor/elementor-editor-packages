@@ -1,6 +1,5 @@
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import commonjs from '@rollup/plugin-commonjs';
-import nodeResolve from '@rollup/plugin-node-resolve';
 import babel from '@rollup/plugin-babel';
 import path from 'path';
 
@@ -39,9 +38,8 @@ export default packages.map((packageDeclaration) => {
 		],
 		plugins: [
 			babel({ babelHelpers: 'bundled' }),
-			nodeResolve(),
-			peerDepsExternal(),
 			commonjs(),
+			peerDepsExternal(),
 		],
 	};
 });

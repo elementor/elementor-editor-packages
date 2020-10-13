@@ -8,7 +8,8 @@
   "main": "build/index.js",
   "module": "build/index.es.js",
   "files": [
-    "build"
+    "build",
+    "src"
   ],
   "repository": {
     "type": "git",
