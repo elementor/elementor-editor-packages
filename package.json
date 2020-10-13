@@ -1,0 +1,51 @@
+{
+  "name": "elementor-editor-packages",
+  "description": "Packages for elementor editor",
+  "private": true,
+  "scripts": {
+    "build": "rollup -c",
+    "test:unit": "jest --config='./test/unit/jest.config.js'"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementor/elementor-editor-packages"
+  },
+  "bugs": {
+    "url": "https://github.com/elementor/elementor-editor-packages/issues"
+  },
+  "homepage": "https://github.com/elementor/elementor-editor-packages",
+  "devDependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-proposal-class-properties": "^7.10.4",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
+    "@babel/preset-react": "^7.10.4",
+    "@rollup/plugin-babel": "^5.2.1",
+    "@rollup/plugin-commonjs": "^15.1.0",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.0.4",
+    "@wordpress/eslint-plugin": "^7.3.0",
+    "@wordpress/prettier-config": "^0.4.0",
+    "babel-jest": "^26.5.2",
+    "eslint": "^7.11.0",
+    "glob": "^7.1.6",
+    "husky": "^4.3.0",
+    "jest": "^26.5.3",
+    "lerna": "^3.22.1",
+    "prettier": "^2.1.2",
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "rollup": "^2.29.0",
+    "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-scss": "^2.6.1"
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+    }
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {}
+}
