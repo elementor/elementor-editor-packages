@@ -1,13 +1,15 @@
 {
   "name": "@elementor/ui",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "description": "Elementor UI library",
   "author": "Elementor Team",
   "homepage": "",
   "license": "ISC",
   "main": "build/index.js",
   "module": "build/index.es.js",
-  "files": ["build"],
+  "files": [
+    "build"
+  ],
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elementor/elementor-editor-packages",
