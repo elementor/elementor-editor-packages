@@ -33,7 +33,7 @@ const finalConfig = lernaJson.packages
 						...(Object.keys(packageJson.dependencies) || []),
 						...(Object.keys(packageJson.peerDependencies) || []),
 					],
-					outputs: availableFormatOutputs
+					output: availableFormatOutputs
 						.filter(({ key }) => packageJson.hasOwnProperty(key))
 						.map(({ format, key }) => ({
 							file: path.resolve(
@@ -41,7 +41,7 @@ const finalConfig = lernaJson.packages
 								packageJson[key]
 							),
 							format,
-							sourceMap: true,
+							sourcemap: true,
 						})),
 					plugins: [
 						babel({ babelHelpers: 'runtime' }),
