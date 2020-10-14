@@ -1,14 +1,14 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 
-export default function Checkbox( props ) {
+export default function Checkbox(props) {
 	return (
 		<input
 			type="checkbox"
-			disabled={ props.disabled }
-			className={ `eps-checkbox ${ props.className }` }
-			checked={ props.checked }
-			onChange={ props.onChange }
+			disabled={props.disabled}
+			className={`eps-checkbox ${props.className}`}
+			checked={props.checked}
+			onChange={props.onChange}
 		/>
 	);
 }
