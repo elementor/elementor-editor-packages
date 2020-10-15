@@ -28,11 +28,17 @@ const finalConfig = lernaJson.packages
 						packageFullPath,
 						packageJson.source || 'src/index.js'
 					),
-					// TODO: Fix babel/runtime external
-					external: [
-						...(Object.keys(packageJson.dependencies) || []),
-						...(Object.keys(packageJson.peerDependencies) || []),
-					],
+					external: (id) => {
+						const dependencies = [
+							...(Object.keys(packageJson.dependencies) || []),
+							...(Object.keys(packageJson.peerDependencies) ||
+								[]),
+						];
+
+						return dependencies.some(
+							(dependency) => id.indexOf(dependency) === 0
+						);
+					},
 					output: availableFormatOutputs
 						.filter(({ key }) => packageJson.hasOwnProperty(key))
 						.map(({ format, key }) => ({
