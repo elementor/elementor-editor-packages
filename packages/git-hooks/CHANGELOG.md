@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.2](https://github.com/elementor/elementor-editor-packages/compare/@elementor/git-hooks@0.1.1...@elementor/git-hooks@0.1.2) (2020-11-22)
+
+
+### Bug Fixes
+
+* **git-hooks:** missing shebang at the start of the file ([b220ed4](https://github.com/elementor/elementor-editor-packages/commit/b220ed4d9a0352e78a760c3ec70ed8db16248c4a))
+
+
+
+
+
 ## [0.1.1](https://github.com/elementor/elementor-editor-packages/compare/@elementor/git-hooks@0.1.0...@elementor/git-hooks@0.1.1) (2020-11-22)
 
 
