@@ -30,9 +30,12 @@ const finalConfig = lernaJson.packages
 					),
 					external: (id) => {
 						const dependencies = [
-							...(Object.keys(packageJson.dependencies) || []),
-							...(Object.keys(packageJson.peerDependencies) ||
-								[]),
+							...(packageJson.dependencies
+								? Object.keys(packageJson.dependencies)
+								: []),
+							...(packageJson.peerDependencies
+								? Object.keys(packageJson.peerDependencies)
+								: []),
 						];
 
 						return dependencies.some(
