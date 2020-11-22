@@ -7,7 +7,9 @@
   "license": "MIT",
   "main": "build/index.js",
   "module": "build/index.es.js",
-  "bin": "build/index.js",
+  "bin": {
+    "elementor-git-hooks": "build/index.js"
+  },
   "files": [
     "build",
     "src"
