@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "build": "rollup -c",
+    "watch": "rollup -cw",
     "test:unit": "jest --config='./test/unit/jest.config.js'"
   },
   "repository": {
