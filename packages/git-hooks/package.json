@@ -5,13 +5,12 @@
   "author": "Elementor Team",
   "homepage": "https://github.com/elementor/elementor-editor-packages",
   "license": "MIT",
-  "main": "build/index.js",
-  "module": "build/index.es.js",
+  "main": "bin/index.js",
   "bin": {
-    "elementor-git-hooks": "build/index.js"
+    "elementor-git-hooks": "bin/index.js"
   },
   "files": [
-    "build",
+    "bin",
     "src"
   ],
   "repository": {

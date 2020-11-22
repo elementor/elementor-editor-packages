@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import { kebabCase } from 'lodash';
 import * as scripts from './scripts';
 import { error } from './utils/logs';

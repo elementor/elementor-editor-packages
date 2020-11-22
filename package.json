@@ -38,6 +38,7 @@
     "react-dom": "^16.13.1",
     "rollup": "^2.29.0",
     "rollup-plugin-peer-deps-external": "^2.2.3",
+    "rollup-plugin-preserve-shebang": "^1.0.1",
     "rollup-plugin-scss": "^2.6.1"
   },
   "husky": {
