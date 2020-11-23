@@ -1,17 +1,13 @@
 import { exec } from 'shelljs';
 import { error, log, success } from '../utils/logs';
+import { getStagedFiles } from '../utils/git';
 
 export async function lintPhp() {
 	log('Start linting php files.');
 
-	const fileDiff = exec(
-		'git diff-index --cached --name-only HEAD | grep .php',
-		{
-			silent: true,
-		}
-	);
+	const stagedFiles = getStagedFiles('php');
 
-	if (!fileDiff.stdout) {
+	if (!stagedFiles.length) {
 		log('No files to lint.');
 
 		return;
@@ -27,7 +23,7 @@ export async function lintPhp() {
 		);
 	}
 
-	const files = fileDiff.stdout.toString().split('\n').join(' ');
+	const files = stagedFiles.join(' ');
 
 	const lint = exec(`composer run lint ${files}`);
 
