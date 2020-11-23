@@ -3,6 +3,22 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.2.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/git-hooks@0.1.2...@elementor/git-hooks@0.2.0) (2020-11-23)
+
+
+### Bug Fixes
+
+* **git-hooks:** exit from the lint when there is not files ([8c762f6](https://github.com/elementor/elementor-editor-packages/commit/8c762f648a0016a1bef41bc5bfdb5fc5089aff0b))
+
+
+### Features
+
+* **git-hooks:** lint js files ([3364f67](https://github.com/elementor/elementor-editor-packages/commit/3364f6791f9d4589f2bc17312f4e6eb246b4fada))
+
+
+
+
+
 ## [0.1.2](https://github.com/elementor/elementor-editor-packages/compare/@elementor/git-hooks@0.1.1...@elementor/git-hooks@0.1.2) (2020-11-22)
 
 
