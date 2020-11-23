@@ -1,5 +1,5 @@
 import { exec } from 'shelljs';
-import { error, exit, log, success } from '../utils/logs';
+import { error, log, success } from '../utils/logs';
 
 export async function lintPhp() {
 	log('Start linting php files.');
@@ -13,7 +13,8 @@ export async function lintPhp() {
 
 	if (!fileDiff.stdout) {
 		log('No files to lint.');
-		exit();
+
+		return;
 	}
 
 	const composerExists = exec('which composer', {
