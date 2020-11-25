@@ -1,9 +1,11 @@
 import lernaJson from './lerna.json';
 import path from 'path';
+import fs from 'fs';
 import glob from 'glob';
 import peerDepsExternal from 'rollup-plugin-peer-deps-external';
 import commonjs from '@rollup/plugin-commonjs';
 import babel from '@rollup/plugin-babel';
+import shebang from 'rollup-plugin-preserve-shebang';
 import scss from 'rollup-plugin-scss';
 
 const availableFormatOutputs = [
@@ -17,6 +19,23 @@ const finalConfig = lernaJson.packages
 			...configs,
 			...glob.sync(globPattern).map((packagePath) => {
 				const packageFullPath = path.resolve(__dirname, packagePath);
+				const rollupConfigPath = path.resolve(
+					packageFullPath,
+					'rollup.config.js'
+				);
+
+				if (fs.existsSync(rollupConfigPath)) {
+					return require(rollupConfigPath)({
+						path,
+						plugins: {
+							babel,
+							commonjs,
+							peerDepsExternal,
+							scss,
+							shebang,
+						},
+					});
+				}
 
 				const packageJson = require(path.resolve(
 					packageFullPath,
