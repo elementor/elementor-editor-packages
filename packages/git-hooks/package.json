@@ -1,0 +1,29 @@
+{
+  "name": "@elementor/git-hooks",
+  "version": "0.2.0",
+  "description": "Elementor git hooks",
+  "author": "Elementor Team",
+  "homepage": "https://github.com/elementor/elementor-editor-packages",
+  "license": "GPL-3.0-or-later",
+  "main": "bin/index.js",
+  "bin": {
+    "elementor-git-hooks": "bin/index.js"
+  },
+  "files": [
+    "bin",
+    "src"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementor/elementor-editor-packages",
+    "directory": "packages/git-hooks"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "lodash": "^4.17.20",
+    "shelljs": "^0.8.4"
+  }
+}

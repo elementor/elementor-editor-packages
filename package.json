@@ -36,7 +36,7 @@
     "husky": "^4.3.0",
     "jest": "^26.5.3",
     "lerna": "^3.22.1",
-    "prettier": "^2.1.2",
+    "prettier": "npm:wp-prettier@2.0.5",
     "react": "^16.13.1",
     "react-dom": "^16.13.1",
     "rollup": "^2.29.0",
