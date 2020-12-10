@@ -1,3 +1,1 @@
-const config = require('@wordpress/prettier-config');
-
-module.exports = config;
+module.exports = require( '@wordpress/prettier-config' );
