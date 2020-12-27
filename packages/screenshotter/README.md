@@ -1,3 +1,3 @@
 # @elementor/screenshotter
 
-### Do not use it!
+### Please do not use it!

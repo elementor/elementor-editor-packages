@@ -6,6 +6,6 @@
 
 ```
 const gitHooks = require('@elementor/git-hooks');
-
-// TODO: DEMONSTRATE API
 ```
+
+### Do not use it!
