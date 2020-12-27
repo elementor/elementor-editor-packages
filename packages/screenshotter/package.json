@@ -1,0 +1,36 @@
+{
+	"name": "@elementor/screenshotter",
+	"version": "0.1.0",
+	"description": "Elementor ScreenShotter - Wordpress Visual Regression Test",
+	"author": "Elementor Team",
+	"homepage": "https://github.com/elementor/elementor-editor-packages",
+	"license": "GPL-3.0-or-later",
+	"engines": {
+		"node": "<=14.15.2"
+	},
+	"bin": {
+		"elementor-screenshotter-run-test-local": "src/run-test-screenshotter-local.js",
+		"elementor-screenshotter-clean-local-env": "src/clean-local-env.js",
+		"elementor-screenshotter-install": "src/install-dependencies.js",
+		"elementor-screenshotter-import-templates": "src/import-templates.js",
+		"elementor-screenshotter-build-package-and-run-server": "src/build-package-and-run-server.js",
+		"elementor-screenshotter-run-test": "src/run-test-screenshotter.js"
+	},
+	"files": [
+		"src"
+	],
+	"dependencies": {
+		"backstopjs": "^5.0.7",
+		"chalk": "^4.0.0",
+		"minimist": "^1.2.1",
+		"shelljs": "^0.8.4"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/elementor/elementor-editor-packages",
+		"directory": "packages/screenshotter"
+	},
+	"publishConfig": {
+		"registry": "https://npm.pkg.github.com/"
+	}
+}
