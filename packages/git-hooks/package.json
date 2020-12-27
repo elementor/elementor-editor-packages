@@ -19,7 +19,8 @@
     "directory": "packages/git-hooks"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/"
+    "registry": "https://npm.pkg.github.com/",
+    "access": "public"
   },
   "dependencies": {
     "chalk": "^4.1.0",
