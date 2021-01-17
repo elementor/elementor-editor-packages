@@ -1,6 +1,6 @@
 {
 	"name": "@elementor/screenshotter",
-	"version": "0.2.2",
+	"version": "0.0.1",
 	"description": "Elementor ScreenShotter - Wordpress Visual Regression Test",
 	"author": "Elementor Team",
 	"homepage": "https://github.com/elementor/elementor-editor-packages",
@@ -31,7 +31,6 @@
 		"directory": "packages/screenshotter"
 	},
 	"publishConfig": {
-		"registry": "https://npm.pkg.github.com/",
 		"access": "public"
 	}
 }

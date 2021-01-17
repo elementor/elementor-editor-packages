@@ -1,6 +1,6 @@
 {
   "name": "@elementor/git-hooks",
-  "version": "0.3.2",
+  "version": "0.0.1",
   "description": "Elementor git hooks",
   "author": "Elementor Team",
   "homepage": "https://github.com/elementor/elementor-editor-packages",
@@ -19,7 +19,6 @@
     "directory": "packages/git-hooks"
   },
   "publishConfig": {
-    "registry": "https://npm.pkg.github.com/",
     "access": "public"
   },
   "dependencies": {
