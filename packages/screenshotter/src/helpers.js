@@ -41,39 +41,7 @@ class Helpers {
 					msgColor = this.chalk.white;
 			}
 
-			console.log( msgColor( `\n${now} - ${msg}` ) );
-		}
-	}
-
-	/**
-	 *  Exec shell command
-	 *  If an error is NOT thrown, then:
-	 *
-	 *	Status is guaranteed to be 0
-	 *	Stdout is what's returned by the function
-	 *	Stderr is almost definitely empty because it was successful.
-	 *	In the rare event the command line executable returns a stderr and yet exits with status 0 (success), and you want to read it, you will need the async function.
-	 *
-	 * @param cmd {string} - the command
-	 *
-	 * @returns {string|boolean}
-	 */
-	execute( cmd, warnings = [] ) {
-		try {
-			const resExec = this.execSync( cmd ).toString();
-			this.printMsg( 'success', `success ${resExec}` );
-			return resExec;
-		} catch ( error ) {
-			this.printMsg( 'error', `message: ${error.message}` );
-			if ( this.args.deepDebug ) {
-				this.printMsg( 'error', `status ${error.status}` );
-				this.printMsg( 'error', `stderr: ${error.stderr}` );
-				this.printMsg( 'error', `stdout: ${error.stdout}` );
-			}
-			if ( 0 !== error.status ) {
-				process.exit( error.status );
-			}
-			return false;
+			console.log( msgColor( `\n${ now } - ${ msg }` ) );
 		}
 	}
 
@@ -93,13 +61,13 @@ class Helpers {
 	execShelljs( cmd ) {
 		const resShellExec = this.shell.exec( cmd );
 		if ( 0 === resShellExec.code ) {
-			this.printMsg( 'success', `success ${resShellExec.stdout}` );
+			this.printMsg( 'success', `success ${ resShellExec.stdout }` );
 			return resShellExec.stdout;
 		}
 		if ( this.args.deepDebug ) {
-			this.printMsg( 'error', `code message: ${resShellExec.code}` );
+			this.printMsg( 'error', `code message: ${ resShellExec.code }` );
 		}
-		this.printMsg( 'error', `stderr message: ${resShellExec.stderr}` );
+		this.printMsg( 'error', `stderr message: ${ resShellExec.stderr }` );
 
 		// Array of possible errors that let the process to continue instead exit
 		const acceptableErrors = [
@@ -129,12 +97,12 @@ class Helpers {
 	 * @param recursive {boolean} - Determine if determine folder recursive
 	 */
 	createFolder( path, recursive = true ) {
-		if ( ! this.fs.existsSync( `${path}` ) ) {
-			this.fs.mkdirSync( `${path}`, { recursive: recursive }, ( err ) => {
+		if ( ! this.fs.existsSync( `${ path }` ) ) {
+			this.fs.mkdirSync( `${ path }`, { recursive: recursive }, ( err ) => {
 				if ( err ) {
-					this.printMsg( 'error', `Can't create directory - ${path}` );
+					this.printMsg( 'error', `Can't create directory - ${ path }` );
 				}
-				this.printMsg( 'success', `Directory created successfully - ${path}` );
+				this.printMsg( 'success', `Directory created successfully - ${ path }` );
 			} );
 		}
 	}
@@ -144,12 +112,12 @@ class Helpers {
 	 * @param path {string} - The path to folder
 	 */
 	deleteFolder( path ) {
-		if ( this.fs.existsSync( `${path}` ) ) {
-			this.deleteFolderRecursive( `${path}` );
-			if ( ! this.fs.existsSync( `${path}` ) ) {
-				this.printMsg( 'success', `Deleted directory: ${path}.` );
+		if ( this.fs.existsSync( `${ path }` ) ) {
+			this.deleteFolderRecursive( `${ path }` );
+			if ( ! this.fs.existsSync( `${ path }` ) ) {
+				this.printMsg( 'success', `Deleted directory: ${ path }.` );
 			} else {
-				this.printMsg( 'error', `Can't deleted directory: ${path}.` );
+				this.printMsg( 'error', `Can't deleted directory: ${ path }.` );
 			}
 		}
 	}
@@ -180,10 +148,10 @@ class Helpers {
 	 */
 	hasFolder( path ) {
 		if ( this.fs.existsSync( path ) ) {
-			this.printMsg( 'info', `Exists folder - ${path}` );
+			this.printMsg( 'info', `Exists folder - ${ path }` );
 			return true;
 		}
-		this.printMsg( 'error', `The folder not exists - ${path}` );
+		this.printMsg( 'error', `The folder not exists - ${ path }` );
 		return false;
 	}
 
@@ -200,30 +168,11 @@ class Helpers {
 		let isDirectory = exists && stats.isDirectory();
 		if ( isDirectory ) {
 			this.createFolder( dest );
-			this.fs.readdirSync( src ).forEach( function( childItemName ) {
+			this.fs.readdirSync( src ).forEach( function ( childItemName ) {
 				_this.copyFolderRecursiveSync( _this.path.join( src, childItemName ), _this.path.join( dest, childItemName ) );
 			} );
 		} else {
 			this.fs.copyFileSync( src, dest );
-		}
-	}
-
-	/**
-	 * Create a symbolic link
-	 *
-	 * @param target {string} - The target path to folder/file
-	 * @param path {string} - The path to folder/file
-	 */
-	createSymlink( target, path ) {
-		if ( ! this.isSymlink( path ) ) {
-			try {
-				const res = this.fs.symlinkSync( target, path, 'dir' );
-				this.printMsg( 'success', 'Symbolic link creation complete.' );
-				return res;
-			} catch ( error ) {
-				this.printMsg( 'error', error );
-			}
-			return false;
 		}
 	}
 
@@ -235,9 +184,9 @@ class Helpers {
 	unlink( path ) {
 		this.fs.unlink( path, (( err ) => {
 			if ( err ) {
-				this.printMsg( 'error', `${err}` );
+				this.printMsg( 'error', `${ err }` );
 			} else {
-				this.printMsg( 'success', `Deleted Symbolic Link: ${path}.` );
+				this.printMsg( 'success', `Deleted Symbolic Link: ${ path }.` );
 			}
 		}) );
 	}
@@ -265,7 +214,7 @@ class Helpers {
 	 * @returns {boolean}
 	 */
 	isInstalledPackage( packageName ) {
-		return !! this.execute( `npm ls -g ${packageName}` );
+		return !! this.execShelljs( `npm ls -g ${ packageName }` );
 	}
 }
 

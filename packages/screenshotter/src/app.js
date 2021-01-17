@@ -46,7 +46,7 @@ class App extends BaseApp {
 	buildPackageAndRunServer() {
 		this.runBuild();
 		this.runWpServer();
-		this.runTestScreenshots()
+		this.runTestScreenshots();
 	}
 
 	/**
@@ -65,4 +65,4 @@ class App extends BaseApp {
 	}
 }
 
-module.exports = new App;
+module.exports = new App();

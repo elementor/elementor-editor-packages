@@ -4,6 +4,7 @@
 
 const arg = require( './config' );
 arg.clean_local_env = true;
+arg.direct_call_to_clean_local_env = true;
 
 /**
  * Running app

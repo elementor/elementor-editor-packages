@@ -19,11 +19,21 @@ class BaseAppShJs {
 	 * Check if dependencies packages exsits, else install them
 	 */
 	basicActionsBeforeInstall() {
+		/**
+		 * @todo: the below condition can be a problem because config must included one of arguments: "theme" or "plugin".
+		 *        also it's blocked command : elementor-screenshotter-clean-local-env. for fix that add new argument to condition : !this.args.direct_call_to_clean_local_env && ...
+		 */
+		// Exit from process if missing config file or arguments: "pluginName" or "theme" is empty
+		if ( ! this.args.direct_call_to_clean_local_env && ( ! this.args.current_plugin.length || ! Object.keys( this.args.current_plugin ).length || ! this.args.wp_themes || ! Object.keys( this.args.wp_themes ).length) ) {
+			this.helpers.printMsg( 'error', 'Error: the arguments: "name" or "theme" is empty. please check ./tests/screenshotter/config.js' );
+			this.process.exit( 1 );
+		}
+
 		this.helpers.createFolder( this.args.wp_core_dir );
 		this.shell.cd( this.args.wp_core_dir );
 
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `basicActionsBeforeInstall - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `basicActionsBeforeInstall - ${ this.shell.pwd() }` );
 
 		this.helpers.execShelljs( 'node -v' );
 		this.helpers.execShelljs( 'npm -v' );
@@ -36,7 +46,7 @@ class BaseAppShJs {
 		this.shell.cd( this.args.wp_core_dir );
 
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `installWpCli - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `installWpCli - ${ this.shell.pwd() }` );
 
 		// Download and install wp-cli
 		this.helpers.execShelljs( `curl -O https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar` );
@@ -52,9 +62,9 @@ class BaseAppShJs {
 	 */
 	downloadWpCore() {
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `downloadWpCore - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `downloadWpCore - ${ this.shell.pwd() }` );
 
-		this.helpers.execShelljs( `wp core download --locale="${this.args.wp_locale}" --version="${this.args.wp_version}" --skip-plugins` );
+		this.helpers.execShelljs( `wp core download --locale="${ this.args.wp_locale }" --version="${ this.args.wp_version }" --skip-plugins` );
 	}
 
 	/**
@@ -62,9 +72,9 @@ class BaseAppShJs {
 	 */
 	config() {
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `config - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `config - ${ this.shell.pwd() }` );
 
-		this.helpers.execShelljs( `wp config create --dbname="${this.args.db_name}" --dbuser="${this.args.db_user}" --dbpass="${this.args.db_pass}"` );
+		this.helpers.execShelljs( `wp config create --dbname="${ this.args.db_name }" --dbuser="${ this.args.db_user }" --dbpass="${ this.args.db_pass }"` );
 	}
 
 	/**
@@ -72,7 +82,7 @@ class BaseAppShJs {
 	 */
 	install() {
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `install - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `install - ${ this.shell.pwd() }` );
 
 		// Create database
 		this.helpers.execShelljs( 'wp db create' );
@@ -85,19 +95,19 @@ class BaseAppShJs {
 
 		if ( dbHostname && dbHostname.length ) {
 			if ( dbSockOrPort && dbSockOrPort.length ) {
-				extra = `--host=${dbHostname} --port=${dbSockOrPort} --protocol=tcp`;
+				extra = `--host=${ dbHostname } --port=${ dbSockOrPort } --protocol=tcp`;
 			} else if ( dbSockOrPort && dbSockOrPort.length ) {
-				extra = `--socket=${dbSockOrPort}`;
+				extra = `--socket=${ dbSockOrPort }`;
 			} else if ( dbHostname && dbHostname.length ) {
-				extra = `--host=${dbHostname} --protocol=tcp`;
+				extra = `--host=${ dbHostname } --protocol=tcp`;
 			}
 		}
 
 		// Optimizes the database
-		this.helpers.execShelljs( `wp db optimize --dbuser="${this.args.db_user}" --dbpass="${this.args.db_pass}" ${extra}` );
+		this.helpers.execShelljs( `wp db optimize --dbuser="${ this.args.db_user }" --dbpass="${ this.args.db_pass }" ${ extra }` );
 
 		// Install WordPress
-		this.helpers.execShelljs( `wp core install --url="${this.args.db_host}" --title="${this.args.wp_site_name}" --admin_user="${this.args.wp_user}" --admin_password="${this.args.wp_user_pass}" --admin_email="${this.args.wp_user_email}"` );
+		this.helpers.execShelljs( `wp core install --url="${ this.args.db_host }" --title="${ this.args.wp_site_name }" --admin_user="${ this.args.wp_user }" --admin_password="${ this.args.wp_user_pass }" --admin_email="${ this.args.wp_user_email }"` );
 	}
 
 	/**
@@ -105,19 +115,39 @@ class BaseAppShJs {
 	 */
 	installPlugins() {
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `installPlugins - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `installPlugins - ${ this.shell.pwd() }` );
 
 		// Create plugins folder
 		this.helpers.createFolder( this.args.wp_core_plugins_dir );
 		if ( this.helpers.hasFolder( this.args.wp_core_plugins_dir ) ) {
-			// Create symlink to current path
-			const symlink = this.shell.ln( '-sf', this.args.initial_working_directory, this.args.current_plugin_dir );
-			if ( symlink ) {
-				this.helpers.printMsg( 'success', `created symlink ${this.args.initial_working_directory}   ${this.args.current_plugin_dir}` )
+
+			if ( Object.keys( this.args.wp_plugins ).length ) {
+				const cpInitialWorkingDirectoryFolder = this.shell.cp( '-R', this.args.initial_working_directory, this.args.current_plugin_dir );
+				if ( 0 === cpInitialWorkingDirectoryFolder.code ) {
+					this.helpers.printMsg( 'success', `copy initial working directory folder from ${ this.args.initial_working_directory } to ${ this.args.current_plugin_dir }` );
+				}
+			} else {
+				// Create symlink to current path
+				const symlink = this.shell.ln( '-sf', this.args.initial_working_directory, this.args.current_plugin_dir );
+				if ( symlink ) {
+					this.helpers.printMsg( 'success', `created symlink ${ this.args.initial_working_directory }   ${ this.args.current_plugin_dir }` )
+				}
 			}
 
-			// Install plugins
-			this.helpers.execShelljs( `wp plugin activate "${this.args.wp_plugins}"` );
+			// Activate plugins (this plugins can be anything or dependencies)
+			if ( Object.keys( this.args.wp_plugins ).length ) {
+				// Install plugins and activate
+				for ( const [ plugin, version ] of Object.entries( this.args.wp_plugins ) ) {
+					// Install specific version, otherwise last version
+					const ver = version.length ? `--version='${ version }'` : '';
+					this.helpers.execShelljs( `wp plugin install '${ plugin }' ${ ver } --activate` );
+				}
+			} else {
+				this.helpers.printMsg( 'info', 'Info: there is no plugins to install. please check ./tests/screenshotter/config.js' );
+			}
+
+			// Activate current plugin (where the PR append)
+			this.helpers.execShelljs( `wp plugin activate "${ this.args.current_plugin }"` );
 		}
 	}
 
@@ -126,10 +156,18 @@ class BaseAppShJs {
 	 */
 	installThemes() {
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `installThemes - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `installThemes - ${ this.shell.pwd() }` );
 
-		// Install the theme
-		this.helpers.execShelljs( `wp theme install "${this.args.wp_themes}" --activate` );
+		if ( Object.keys( this.args.wp_themes ).length ) {
+			// Install the theme
+			for ( const [ theme, version ] of Object.entries( this.args.wp_themes ) ) {
+				// Install specific version, otherwise last version
+				const ver = version.length ? `--version='${ version }'` : '';
+				this.helpers.execShelljs( `wp theme install "${ theme }" ${ ver } --activate` );
+			}
+		} else {
+			this.helpers.printMsg( 'error', 'Error: there is no theme to install. please check ./tests/screenshotter/config.js' );
+		}
 	}
 
 	/**
@@ -139,19 +177,18 @@ class BaseAppShJs {
 		this.shell.cd( this.args.wp_core_dir );
 
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `importTestTemplates - ${this.shell.pwd()}` );
-
+		this.helpers.printMsg( 'info', `importTestTemplates - ${ this.shell.pwd() }` );
 		if ( this.args.files.length ) {
 			for ( const file of this.args.files ) {
 				// Import elementor json template to db
-				this.helpers.execShelljs( `wp elementor library import "${this.args.current_plugin_test_conf_dir}/${file}.json" --user="${this.args.wp_user}"` );
+				this.helpers.execShelljs( `wp elementor library import "${ this.args.current_plugin_test_conf_dir }/${ file }.json" --user="${ this.args.wp_user }"` );
 
 				// Extract the template id from given string and update the pot_type of post to 'page'
-				const templateID = this.helpers.execShelljs( `wp db query "SELECT id FROM wp_posts WHERE post_name='${file}' ORDER BY 'id' ASC LIMIT 1;"` ).toString().replace( /[^0-9]/g, '' );
-				this.helpers.execShelljs( `wp db query "UPDATE wp_posts SET post_type='page' WHERE id='${templateID}';"` );
+				const templateID = this.helpers.execShelljs( `wp db query "SELECT id FROM wp_posts WHERE post_name='${ file }' ORDER BY 'id' ASC LIMIT 1;"` ).toString().replace( /[^0-9]/g, '' );
+				this.helpers.execShelljs( `wp db query "UPDATE wp_posts SET post_type='page' WHERE id='${ templateID }';"` );
 
 				// Get information for debug state
-				this.helpers.execShelljs( `wp db query "SELECT id,post_title,post_name,post_type,post_status,post_date FROM wp_posts WHERE id='${templateID}';"` );
+				this.helpers.execShelljs( `wp db query "SELECT id,post_title,post_name,post_type,post_status,post_date FROM wp_posts WHERE id='${ templateID }';"` );
 			}
 		} else {
 			this.helpers.printMsg( 'error', 'Error: there is no file(s) to import.' );
@@ -167,7 +204,7 @@ class BaseAppShJs {
 		this.shell.cd( this.args.current_plugin_dir );
 
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `runBuild - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `runBuild - ${ this.process.cwd() }` );
 
 		if ( this.helpers.hasFolder( this.args.current_plugin_dir ) ) {
 			if ( ! this.helpers.isInstalledPackage( 'grunt-cli' ) ) {
@@ -179,7 +216,7 @@ class BaseAppShJs {
 			}
 			if ( this.helpers.isInstalledPackage( 'grunt-cli' ) ) {
 				// Get information for debug state
-				this.helpers.printMsg( 'info', `grunt installed - ${this.shell.pwd()}` );
+				this.helpers.printMsg( 'info', `grunt installed - ${ this.shell.pwd() }` );
 				// Npm install && run Build
 				this.helpers.execShelljs( 'npm i && grunt' );
 			}
@@ -193,7 +230,7 @@ class BaseAppShJs {
 		this.shell.cd( this.args.wp_core_dir );
 
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `runWpServer - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `runWpServer - ${ this.shell.pwd() }` );
 
 		// Rewrite url structure
 		this.helpers.execShelljs( 'wp rewrite structure "/%postname%/"' );
@@ -219,7 +256,7 @@ class BaseAppShJs {
 		this.shell.cd( this.args.wp_core_dir );
 
 		// Get information for debug state
-		this.helpers.printMsg( 'info', `testScreenshots - ${this.shell.pwd()}` );
+		this.helpers.printMsg( 'info', `testScreenshots - ${ this.shell.pwd() }` );
 
 		// Create directory called 'reference'
 		this.helpers.createFolder( this.args.backstop_ref_dir );
@@ -228,7 +265,7 @@ class BaseAppShJs {
 			// Copy paste to path
 			const cpReferenceFolder = this.shell.cp( '-R', this.args.current_plugin_test_ref_dir, this.args.backstop_dir );
 			if ( 0 === cpReferenceFolder.code ) {
-				this.helpers.printMsg( 'success', `copy reference folder from ${this.args.current_plugin_test_ref_dir} to ${this.args.backstop_dir}` );
+				this.helpers.printMsg( 'success', `copy reference folder from ${ this.args.current_plugin_test_ref_dir } to ${ this.args.backstop_dir }` );
 			}
 		}
 
@@ -239,10 +276,10 @@ class BaseAppShJs {
 		 */
 		if ( this.args.reference ) {
 			// The below two command running backstop directly
-			this.helpers.execShelljs( `node ${__dirname}/../node_modules/backstopjs/cli/index.js reference --config="${this.args.current_plugin_test_wp_ss_dir}/backstop.js"` );
+			this.helpers.execShelljs( `node ${ __dirname }/../node_modules/backstopjs/cli/index.js reference --config="${ this.args.current_plugin_test_screenshotter_dir }/backstop.js"` );
 		}
 
-		const backstopResult = this.helpers.execShelljs( `node "${__dirname}/../node_modules/backstopjs/cli/index.js" test --config="${this.args.current_plugin_test_wp_ss_dir}/backstop.js"` );
+		const backstopResult = this.helpers.execShelljs( `node "${ __dirname }/../node_modules/backstopjs/cli/index.js" test --config="${ this.args.current_plugin_test_screenshotter_dir }/backstop.js"` );
 
 		if ( false === backstopResult ) {
 			process.exit( 1 );
@@ -264,12 +301,20 @@ class BaseAppShJs {
 	}
 
 	/**
+	 * Clears the internal cache
+	 */
+	wpCliCacheClear() {
+		this.shell.cd( this.args.wp_core_dir );
+		this.helpers.execShelljs( `wp cli cache clear` );
+	}
+
+	/**
 	 * Delete symlink if exists
 	 */
 	deleteSymlink() {
-		const checkIsSymlink = this.helpers.isSymlink( `${this.args.current_plugin_dir}` );
+		const checkIsSymlink = this.helpers.isSymlink( `${ this.args.current_plugin_dir }` );
 		if ( checkIsSymlink ) {
-			this.helpers.unlink( `${this.args.current_plugin_dir}` );
+			this.helpers.unlink( `${ this.args.current_plugin_dir }` );
 		}
 	}
 
@@ -278,17 +323,9 @@ class BaseAppShJs {
 	 */
 	deleteTheInstalledDirectories() {
 		// Delete the directory and all its contents, including any subdirectories and files by ${path}
-		this.helpers.deleteFolder( `${this.args.wp_core_dir}` );
-		this.helpers.deleteFolder( `${this.args.wp_tests_dir}` );
-		this.helpers.deleteFolder( `${this.args.current_plugin_test_wp_ss_dir}` );
-	}
-
-	/**
-	 * Clears the internal cache
-	 */
-	wpCliCacheClear() {
-		this.shell.cd( this.args.wp_core_dir );
-		this.helpers.execShelljs( `wp cli cache clear` );
+		this.helpers.deleteFolder( `${ this.args.wp_core_dir }` );
+		this.helpers.deleteFolder( `${ this.args.wp_tests_dir }` );
+		this.helpers.deleteFolder( `${ this.args.current_plugin_test_screenshotter_dir }` );
 	}
 
 	/**
@@ -300,9 +337,9 @@ class BaseAppShJs {
 		if ( ! this.isRunningkillServerProcess ) {
 			this.isRunningkillServerProcess = true;
 			// Get information for debug state
-			this.helpers.printMsg( 'info', `killServerProcess - ${this.shell.pwd()}` );
+			this.helpers.printMsg( 'info', `killServerProcess - ${ this.shell.pwd() }` );
 			if ( this.childProc && this.childProc.pid ) {
-				this.helpers.printMsg( 'info', `process pid ${this.childProc.pid}` );
+				this.helpers.printMsg( 'info', `process pid ${ this.childProc.pid }` );
 				this.process.kill( this.childProc.pid )
 				this.childProc.abort();
 			}
@@ -316,9 +353,9 @@ class BaseAppShJs {
 		// Decided if clean local env
 		if ( this.args.clean_local_env ) {
 			this.deleteDB();
+			this.wpCliCacheClear();
 			this.deleteSymlink();
 			this.deleteTheInstalledDirectories();
-			this.wpCliCacheClear();
 			this.killServerProcess();
 		}
 	}

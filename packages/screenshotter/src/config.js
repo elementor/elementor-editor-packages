@@ -2,38 +2,39 @@
 
 /**
  * For running this script in local env, it requires to install:
- * zip archive
- * mysql
+ * zip archive,
+ * mysql,
  * wp-cli
  */
 
 const argv = require( 'minimist' )( process.argv.slice( 2 ) );
+const config = argv.config && Object.keys( argv.config ).length ? require( argv.config ) : {};
 
 const args = {
 	/**
 	 * Set DB params for settings
 	 */
-	db_name: argv.db_name ?? 'wordpress_test',
-	db_user: argv.db_user ?? 'root',
-	db_pass: argv.db_pass ?? 'root',
-	db_host: argv.db_host ?? 'localhost',
+	db_name: config.db_name ?? 'wordpress_test',
+	db_user: config.db_user ?? 'root',
+	db_pass: config.db_pass ?? 'root',
+	db_host: config.db_host ?? 'localhost',
 
 	/**
 	 * Set WP params for settings
 	 */
-	wp_version: argv.wp_version ?? 'latest',
-	wp_locale: argv.wp_locale ?? 'en_US',
-	wp_user: argv.wp_user ?? 'test',
-	wp_user_pass: argv.wp_user_pass ?? 'test',
-	wp_user_email: argv.wp_user_email ?? 'user@example.org',
-	wp_site_name: argv.wp_site_name ?? 'test',
-	wp_themes: argv.wp_themes ?? 'hello-elementor',
-	wp_plugins: argv.wp_plugins ?? 'elementor',
+	wp_version: config.wp_version ?? 'latest',
+	wp_locale: config.wp_locale ?? 'en_US',
+	wp_user: config.wp_user ?? 'test',
+	wp_user_pass: config.wp_user_pass ?? 'test',
+	wp_user_email: config.wp_user_email ?? 'user@example.org',
+	wp_site_name: config.wp_site_name ?? 'test',
+	wp_themes: config.theme ?? '',
+	wp_plugins: config.plugins ?? {},
 
 	/**
 	 * Declare an array of files to import for testing (the name of file must be same as the post_name)
 	 */
-	files: argv.files ?? [ 'buttons', 'dividers', 'global-settings', 'headings', 'icons', 'icons-box', 'icons-list', 'page-17', 'social-icons', 'testimonials', 'text-editor' ],
+	files: config.templates ?? [],
 
 	/**
 	 * Save the current working directory in an environment variable.
@@ -49,7 +50,7 @@ const args = {
 	/**
 	 * Set paths to current plugins and them tests directories
 	 */
-	current_plugin: argv.current_plugin ?? 'elementor',
+	current_plugin: config.name ?? '',
 
 	/**
 	 * debug (bool) - determine if running with basic msg like info|warning|error|success
@@ -70,6 +71,10 @@ const args = {
 	 */
 	clean_local_env: argv.clean_local_env ?? false,
 	/**
+	 * direct_call_to_clean_local_env (bool) - prevent exit from process when user run only command -> elementor-screenshotter-clean-local-env
+	 */
+	direct_call_to_clean_local_env: false,
+	/**
 	 * test_as_device (string) - image compare run test as device (desktop|tablet|mobile|any other)
 	 */
 	test_as_device: argv.db_name ?? 'desktop',
@@ -82,16 +87,16 @@ const args = {
 /**
  * Add more directories paths for test
  */
-args.backstop_dir = `${args.wp_core_dir}backstop_data`;
-args.backstop_ref_dir = `${args.backstop_dir}/reference`;
-args.wp_core_plugins_dir = `${args.wp_core_dir}wp-content/plugins`;
-args.current_plugin_dir = `${args.wp_core_dir}wp-content/plugins/${args.current_plugin}`;
-args.current_plugin_test_dir = `${args.current_plugin_dir}/tests`;
-args.current_plugin_test_ref_dir = `${args.current_plugin_test_dir}/screenshotter/reference`;
-args.current_plugin_test_conf_dir = `${args.current_plugin_test_dir}/screenshotter/config`;
+args.backstop_dir = `${ args.wp_core_dir }backstop_data`;
+args.backstop_ref_dir = `${ args.backstop_dir }/reference`;
+args.wp_core_plugins_dir = `${ args.wp_core_dir }wp-content/plugins`;
+args.current_plugin_dir = `${ args.wp_core_dir }wp-content/plugins/${ args.current_plugin }`;
+args.current_plugin_test_dir = `${ args.current_plugin_dir }/tests`;
+args.current_plugin_test_ref_dir = `${ args.current_plugin_test_dir }/screenshotter/reference`;
+args.current_plugin_test_conf_dir = `${ args.current_plugin_test_dir }/screenshotter/config`;
 /**
- * Set path to directory of sampled image to compare (before compare with percy)
+ * Set path to directory of sampled image to compare (before compare with backstop)
  */
-args.current_plugin_test_wp_ss_dir = `${args.current_plugin_test_dir}/screenshotter`;
+args.current_plugin_test_screenshotter_dir = `${ args.current_plugin_test_dir }/screenshotter`;
 
 module.exports = args;
