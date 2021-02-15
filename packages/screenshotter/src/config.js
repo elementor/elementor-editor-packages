@@ -48,9 +48,19 @@ const args = {
 	wp_core_dir: '/tmp/wordpress/',
 
 	/**
+	 * Set paths to current plugin and his tests directories
+	 */
+	current_plugin: config.plugin_name ?? '',
+
+	/**
+	 * Set paths to current theme and his tests directories
+	 */
+	current_theme: config.theme_name ?? '',
+
+	/**
 	 * Set paths to current plugins and them tests directories
 	 */
-	current_plugin: config.name ?? '',
+	test_type: config.test_type ?? '',
 
 	/**
 	 * debug (bool) - determine if running with basic msg like info|warning|error|success
@@ -90,13 +100,19 @@ const args = {
 args.backstop_dir = `${ args.wp_core_dir }backstop_data`;
 args.backstop_ref_dir = `${ args.backstop_dir }/reference`;
 args.wp_core_plugins_dir = `${ args.wp_core_dir }wp-content/plugins`;
-args.current_plugin_dir = `${ args.wp_core_dir }wp-content/plugins/${ args.current_plugin }`;
+args.current_plugin_dir = `${ args.wp_core_plugins_dir }/${ args.current_plugin }`;
 args.current_plugin_test_dir = `${ args.current_plugin_dir }/tests`;
 args.current_plugin_test_ref_dir = `${ args.current_plugin_test_dir }/screenshotter/reference`;
 args.current_plugin_test_conf_dir = `${ args.current_plugin_test_dir }/screenshotter/config`;
+args.wp_themes_dir = `${ args.wp_core_dir }wp-content/themes`;
+args.current_theme_dir = `${ args.wp_themes_dir }/${ args.current_theme }`;
+args.current_theme_test_dir = `${ args.current_theme_dir }/tests`;
+args.current_theme_test_ref_dir = `${ args.current_theme_test_dir }/screenshotter/reference`;
+args.current_theme_test_conf_dir = `${ args.current_theme_test_dir }/screenshotter/config`;
 /**
  * Set path to directory of sampled image to compare (before compare with backstop)
  */
 args.current_plugin_test_screenshotter_dir = `${ args.current_plugin_test_dir }/screenshotter`;
+args.current_theme_test_screenshotter_dir = `${ args.current_theme_test_dir }/screenshotter`;
 
 module.exports = args;

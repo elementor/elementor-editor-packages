@@ -19,14 +19,22 @@ class BaseAppShJs {
 	 * Check if dependencies packages exsits, else install them
 	 */
 	basicActionsBeforeInstall() {
-		/**
-		 * @todo: the below condition can be a problem because config must included one of arguments: "theme" or "plugin".
-		 *        also it's blocked command : elementor-screenshotter-clean-local-env. for fix that add new argument to condition : !this.args.direct_call_to_clean_local_env && ...
-		 */
-		// Exit from process if missing config file or arguments: "pluginName" or "theme" is empty
-		if ( ! this.args.direct_call_to_clean_local_env && ( ! this.args.current_plugin.length || ! Object.keys( this.args.current_plugin ).length || ! this.args.wp_themes || ! Object.keys( this.args.wp_themes ).length) ) {
-			this.helpers.printMsg( 'error', 'Error: the arguments: "name" or "theme" is empty. please check ./tests/screenshotter/config.js' );
-			this.process.exit( 1 );
+		if ( ! this.args.direct_call_to_clean_local_env ) {
+			/**
+			 * @todo: the below condition can be a problem because config must included one of arguments: "theme" or "plugin".
+			 *        also it's blocked command : elementor-screenshotter-clean-local-env. for fix that add new argument to condition : !this.args.direct_call_to_clean_local_env && ...
+			 */
+			const testPlugin = ( ! this.args.direct_call_to_clean_local_env && 'plugin' === this.args.test_type && ( ! this.args.current_plugin.length || ! Object.keys( this.args.wp_themes ).length ) );
+			const testTheme = ( ! this.args.direct_call_to_clean_local_env && 'theme' === this.args.test_type && ( ! Object.keys( this.args.wp_plugins ).length || ! this.args.current_theme.length ) );
+			// Exit from process if missing config file or arguments: "pluginName" or "theme" is empty
+			if ( testPlugin ) {
+				this.helpers.printMsg( 'error', 'Error: the arguments: "name" or "theme" is empty. please check ./tests/screenshotter/config.js' );
+				this.process.exit( 1 );
+			}
+			if ( testTheme ) {
+				this.helpers.printMsg( 'error', 'Error: the arguments: "plugins" or "theme_name" is empty. please check ./tests/screenshotter/config.js' );
+				this.process.exit( 1 );
+			}
 		}
 
 		this.helpers.createFolder( this.args.wp_core_dir );
@@ -121,16 +129,18 @@ class BaseAppShJs {
 		this.helpers.createFolder( this.args.wp_core_plugins_dir );
 		if ( this.helpers.hasFolder( this.args.wp_core_plugins_dir ) ) {
 
-			if ( Object.keys( this.args.wp_plugins ).length ) {
-				const cpInitialWorkingDirectoryFolder = this.shell.cp( '-R', this.args.initial_working_directory, this.args.current_plugin_dir );
-				if ( 0 === cpInitialWorkingDirectoryFolder.code ) {
-					this.helpers.printMsg( 'success', `copy initial working directory folder from ${ this.args.initial_working_directory } to ${ this.args.current_plugin_dir }` );
-				}
-			} else {
-				// Create symlink to current path
-				const symlink = this.shell.ln( '-sf', this.args.initial_working_directory, this.args.current_plugin_dir );
-				if ( symlink ) {
-					this.helpers.printMsg( 'success', `created symlink ${ this.args.initial_working_directory }   ${ this.args.current_plugin_dir }` )
+			if ( 'plugin' === this.args.test_type ) {
+				if ( Object.keys( this.args.wp_plugins ).length ) {
+					const cpInitialWorkingDirectoryFolder = this.shell.cp( '-R', this.args.initial_working_directory, this.args.current_plugin_dir );
+					if ( 0 === cpInitialWorkingDirectoryFolder.code ) {
+						this.helpers.printMsg( 'success', `copy initial working directory folder from ${this.args.initial_working_directory} to ${this.args.current_plugin_dir}` );
+					}
+				} else {
+					// Create symlink to current path
+					const symlink = this.shell.ln( '-sf', this.args.initial_working_directory, this.args.current_plugin_dir );
+					if ( symlink ) {
+						this.helpers.printMsg( 'success', `created symlink ${this.args.initial_working_directory}   ${this.args.current_plugin_dir}` )
+					}
 				}
 			}
 
@@ -140,14 +150,18 @@ class BaseAppShJs {
 				for ( const [ plugin, version ] of Object.entries( this.args.wp_plugins ) ) {
 					// Install specific version, otherwise last version
 					const ver = version.length ? `--version='${ version }'` : '';
-					this.helpers.execShelljs( `wp plugin install '${ plugin }' ${ ver } --activate` );
+					this.helpers.execShelljs( `wp plugin install '${ plugin }' ${ ver } --activate --force` );
 				}
 			} else {
-				this.helpers.printMsg( 'info', 'Info: there is no plugins to install. please check ./tests/screenshotter/config.js' );
+				this.helpers.printMsg( 'info', 'Info: there is no plugins to install. please check variable called: "plugins" on path ./tests/screenshotter/config.js' );
 			}
 
-			// Activate current plugin (where the PR append)
-			this.helpers.execShelljs( `wp plugin activate "${ this.args.current_plugin }"` );
+			if ( this.args.current_plugin ) {
+				// Activate current plugin (where the PR append)
+				this.helpers.execShelljs( `wp plugin activate "${this.args.current_plugin}"` );
+			} else {
+				this.helpers.printMsg( 'info', 'Info: there is no plugin to install. please check variable called: "name" on path ./tests/screenshotter/config.js' );
+			}
 		}
 	}
 
@@ -158,15 +172,37 @@ class BaseAppShJs {
 		// Get information for debug state
 		this.helpers.printMsg( 'info', `installThemes - ${ this.shell.pwd() }` );
 
+		if ( 'theme' === this.args.test_type ) {
+			if ( Object.keys( this.args.wp_themes ).length ) {
+				const cpInitialWorkingDirectoryFolder = this.shell.cp( '-R', this.args.initial_working_directory, this.args.current_theme_dir );
+				if ( 0 === cpInitialWorkingDirectoryFolder.code ) {
+					this.helpers.printMsg( 'success', `copy initial working directory folder from ${this.args.initial_working_directory}/${this.args.current_theme} to ${this.args.current_theme_dir}` );
+				}
+			} else {
+				// Create symlink to current path
+				const symlink = this.shell.ln( '-sf', `${this.args.initial_working_directory}/${this.args.current_theme}`, this.args.current_theme_dir );
+				if ( symlink ) {
+					this.helpers.printMsg( 'success', `created symlink ${this.args.initial_working_directory}/${this.args.current_theme}   ${this.args.current_theme_dir}` )
+				}
+			}
+		}
+
 		if ( Object.keys( this.args.wp_themes ).length ) {
 			// Install the theme
 			for ( const [ theme, version ] of Object.entries( this.args.wp_themes ) ) {
 				// Install specific version, otherwise last version
 				const ver = version.length ? `--version='${ version }'` : '';
-				this.helpers.execShelljs( `wp theme install "${ theme }" ${ ver } --activate` );
+				this.helpers.execShelljs( `wp theme install "${ theme }" ${ ver } --activate --force` );
 			}
 		} else {
-			this.helpers.printMsg( 'error', 'Error: there is no theme to install. please check ./tests/screenshotter/config.js' );
+			this.helpers.printMsg( 'info', 'Info: there is no themes to install. please check variable called: "themes" on path ./tests/screenshotter/config.js' );
+		}
+
+		if ( this.args.current_theme ) {
+			// Activate current theme (where the PR append)
+			this.helpers.execShelljs( `wp theme activate "${ this.args.current_theme }"` );
+		} else {
+			this.helpers.printMsg( 'info', 'Info: there is no theme to install. please check variable called: "theme_name" on path ./tests/screenshotter/config.js' );
 		}
 	}
 
@@ -180,9 +216,11 @@ class BaseAppShJs {
 		this.helpers.printMsg( 'info', `importTestTemplates - ${ this.shell.pwd() }` );
 		if ( this.args.files.length ) {
 			for ( const file of this.args.files ) {
+				if ( 'theme' === this.args.test_type ) {
+					this.args.current_plugin_test_conf_dir = this.args.current_theme_test_conf_dir;
+				}
 				// Import elementor json template to db
-				this.helpers.execShelljs( `wp elementor library import "${ this.args.current_plugin_test_conf_dir }/${ file }.json" --user="${ this.args.wp_user }"` );
-
+				this.helpers.execShelljs( `wp elementor library import "${this.args.current_plugin_test_conf_dir}/${file}.json" --user="${this.args.wp_user}"` );
 				// Extract the template id from given string and update the pot_type of post to 'page'
 				const templateID = this.helpers.execShelljs( `wp db query "SELECT id FROM wp_posts WHERE post_name='${ file }' ORDER BY 'id' ASC LIMIT 1;"` ).toString().replace( /[^0-9]/g, '' );
 				this.helpers.execShelljs( `wp db query "UPDATE wp_posts SET post_type='page' WHERE id='${ templateID }';"` );
@@ -206,9 +244,17 @@ class BaseAppShJs {
 		// Get information for debug state
 		this.helpers.printMsg( 'info', `runBuild - ${ this.process.cwd() }` );
 
-		if ( this.helpers.hasFolder( this.args.current_plugin_dir ) ) {
+		this.buildByTestType( this.helpers.hasFolder( this.args.current_plugin_dir ) );
+
+		if ( 'theme' === this.args.test_type ) {
+			this.shell.cd( this.args.current_theme_dir );
+			this.buildByTestType( this.helpers.hasFolder( this.args.current_theme_dir ) );
+		}
+	}
+
+	buildByTestType( hasFolder ) {
+		if ( hasFolder ) {
 			if ( ! this.helpers.isInstalledPackage( 'grunt-cli' ) ) {
-				// this.helpers.execShelljs( 'npm i grunt-cli' );
 				const gruntIsInstalled = this.helpers.execShelljs( 'npm i grunt-cli' );
 				if ( false === gruntIsInstalled ) {
 					return this.runBuild();
@@ -262,11 +308,18 @@ class BaseAppShJs {
 		this.helpers.createFolder( this.args.backstop_ref_dir );
 
 		if ( ! this.args.reference ) {
+			if ( 'theme' === this.args.test_type ) {
+				this.args.current_plugin_test_ref_dir = this.args.current_theme_test_ref_dir;
+			}
 			// Copy paste to path
 			const cpReferenceFolder = this.shell.cp( '-R', this.args.current_plugin_test_ref_dir, this.args.backstop_dir );
 			if ( 0 === cpReferenceFolder.code ) {
 				this.helpers.printMsg( 'success', `copy reference folder from ${ this.args.current_plugin_test_ref_dir } to ${ this.args.backstop_dir }` );
 			}
+		}
+
+		if ( 'theme' === this.args.test_type ) {
+			this.args.current_plugin_test_screenshotter_dir = this.args.current_theme_test_screenshotter_dir;
 		}
 
 		/**
