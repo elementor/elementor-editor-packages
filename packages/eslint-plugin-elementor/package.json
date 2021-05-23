@@ -1,0 +1,26 @@
+{
+  "name": "@elementor/eslint-plugin-elementor",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Elementor Team",
+  "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/eslint-plugin-elementor#readme",
+  "license": "GPL-3.0-or-later",
+  "main": "lib/index.js",
+  "files": [
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementor/elementor-editor-packages.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/elementor/elementor-editor-packages/issues"
+  },
+  "peerDependencies": {
+    "eslint": ">=5.4.0",
+    "eslint-plugin-react": ">=7.11.0"
+  }
+}
