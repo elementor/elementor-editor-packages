@@ -1,6 +1,6 @@
 {
   "name": "@elementor/eslint-plugin-elementor",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "",
   "author": "Elementor Team",
   "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/eslint-plugin-elementor#readme",
