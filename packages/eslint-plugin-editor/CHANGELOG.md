@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.4.0 (2021-05-23)
+
+
+### Features
+
+* **eslint-plugin-editor:** change eslint plugin name ([80d9496](https://github.com/elementor/elementor-editor-packages/commit/80d94963a2a36df7b8ac0019a23ab6dc6c48142f))
+
+
+
+
+
 # [0.3.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/eslint-plugin-elementor@0.2.0...@elementor/eslint-plugin-elementor@0.3.0) (2021-05-23)
 
 
