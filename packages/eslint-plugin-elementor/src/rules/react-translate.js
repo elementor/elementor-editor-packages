@@ -19,7 +19,6 @@ export default {
 
 					context.report( {
 						node: childNode,
-						loc: childNode.loc.start,
 						message: 'Please translate this sentence',
 					} );
 				} );
