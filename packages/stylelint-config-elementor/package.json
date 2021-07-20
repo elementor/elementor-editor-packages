@@ -1,0 +1,25 @@
+{
+  "name": "@elementor/stylelint-config-elementor",
+  "version": "0.1.0",
+  "description": "",
+  "author": "Elementor Team",
+  "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/stylelint-config-elementor#readme",
+  "license": "GPL-3.0-or-later",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elementor/elementor-editor-packages.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "bugs": {
+    "url": "https://github.com/elementor/elementor-editor-packages/issues"
+  },
+  "devDependencies": {
+    "stylelint": "^13.13.1",
+    "stylelint-config-sass-guidelines": "^8.0.0",
+    "stylelint-config-standard": "^22.0.0",
+    "stylelint-scss": "^3.20.1"
+  }
+}
