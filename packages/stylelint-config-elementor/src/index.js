@@ -20,5 +20,5 @@ module.exports = {
 		'scss/at-function-pattern': false,
 		'scss/selector-no-redundant-nesting-selector': false,
 		'string-quotes': 'single',
-	}
+	},
 };
