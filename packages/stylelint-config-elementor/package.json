@@ -1,6 +1,6 @@
 {
   "name": "@elementor/stylelint-config-elementor",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "description": "",
   "author": "Elementor Team",
   "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/stylelint-config-elementor#readme",
