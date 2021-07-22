@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+## [0.1.4](https://github.com/elementor/elementor-editor-packages/compare/@elementor/stylelint-config-elementor@0.1.3...@elementor/stylelint-config-elementor@0.1.4) (2021-07-22)
+
+
+### Bug Fixes
+
+* **stylelint-config-elementor:** adding a gitignore file ([5ebaef8](https://github.com/elementor/elementor-editor-packages/commit/5ebaef89b3c2b453c4422a17797848214ef10345))
+
+
+
+
+
 ## [0.1.3](https://github.com/elementor/elementor-editor-packages/compare/@elementor/stylelint-config-elementor@0.1.2...@elementor/stylelint-config-elementor@0.1.3) (2021-07-21)
 
 
