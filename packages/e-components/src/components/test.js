@@ -1,3 +1,7 @@
-export const Test = () => {
-	return (<p>Rotem112233</p>);
-};
+export function close() {
+	return 'close7';
+}
+
+export function rotem() {
+	return 'rotem7';
+}
