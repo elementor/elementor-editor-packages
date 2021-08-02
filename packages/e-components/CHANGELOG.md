@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.3.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/e-components@0.2.0...@elementor/e-components@0.3.0) (2021-08-02)
+
+
+### Features
+
+* **e-components:** testing conditional imports ([6865391](https://github.com/elementor/elementor-editor-packages/commit/6865391c66bdf7110d103ed5df6f515d66b97901))
+
+
+
+
+
 # 0.2.0 (2021-07-22)
 
 
