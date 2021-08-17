@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.4.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.3.0...@elementor/re-styled@0.4.0) (2021-08-17)
+
+
+### Features
+
+* **re-styled:** adding the styled-components infra ([34abde8](https://github.com/elementor/elementor-editor-packages/commit/34abde8e83c670c3cc717c221d7d80f6dd73c961))
+
+
+
+
+
 # [0.3.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.2.0...@elementor/re-styled@0.3.0) (2021-08-17)
 
 
