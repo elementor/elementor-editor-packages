@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.5.0 (2021-08-17)
+
+
+### Features
+
+* **e-components:** renaming the e-components package to re-comp ([23abb57](https://github.com/elementor/elementor-editor-packages/commit/23abb57e799cccba19d167d0cff3d10ddec579db))
+
+
+
+
+
 # [0.4.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/e-components@0.3.0...@elementor/e-components@0.4.0) (2021-08-02)
 
 
