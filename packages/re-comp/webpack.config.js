@@ -6,7 +6,7 @@ module.exports = {
 	entry: './src/index.js',
 	output: {
 		filename: 'index.js',
-		library: '@elementor/e-components',
+		library: '@elementor/re-comp',
 		libraryTarget: 'umd',
 		path: path.resolve( __dirname, 'lib' ),
 	},
