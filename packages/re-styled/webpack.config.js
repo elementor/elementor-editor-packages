@@ -4,6 +4,12 @@ const path = require( 'path' );
 module.exports = {
 	mode: 'production',
 	entry: './src/index.js',
+	resolve: {
+		alias: {
+			'utils': path.resolve( __dirname, './src/utils/' ),
+			'theme': path.resolve( __dirname, './src/components/theme' ),
+		},
+	},
 	output: {
 		filename: 'index.js',
 		library: '@elementor/re-styled',
@@ -19,7 +25,7 @@ module.exports = {
 					{
 						loader: 'babel-loader',
 						options: {
-							presets: [ [ '@babel/preset-env', { "useBuiltIns": "usage" } ], '@babel/preset-react' ],
+							presets: [ [ '@babel/preset-env', { "useBuiltIns": "usage", "corejs": 3 } ], '@babel/preset-react' ],
 						},
 					},
 				],
