@@ -1,3 +1,3 @@
-export default function Test() {
-	return (<p>Test Component</p>);
+export const Rotem = () => {
+	return <p>rotem</p>;
 }
