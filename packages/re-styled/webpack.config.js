@@ -5,7 +5,7 @@ module.exports = {
 	mode: 'production',
 	entry: './src/index.js',
 	externals: {
-		react: 'React',
+		react: 'window.React',
 	},
 	resolve: {
 		alias: {
