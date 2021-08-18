@@ -4,9 +4,6 @@ const path = require( 'path' );
 module.exports = {
 	mode: 'production',
 	entry: './src/index.js',
-	externals: {
-		react: 'React',
-	},
 	resolve: {
 		alias: {
 			'utils': path.resolve( __dirname, './src/utils/' ),
