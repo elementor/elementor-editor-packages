@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.11.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.10.0...@elementor/re-styled@0.11.0) (2021-08-18)
+
+
+### Features
+
+* **re-styled:** test ([1b92732](https://github.com/elementor/elementor-editor-packages/commit/1b92732d8f3a843813c56ca9ea8fdc9fc8796e08))
+
+
+
+
+
 # [0.10.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.9.0...@elementor/re-styled@0.10.0) (2021-08-18)
 
 
