@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.7.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.6.0...@elementor/re-styled@0.7.0) (2021-08-18)
+
+
+### Features
+
+* **re-styled:** testing the button component ([42572c7](https://github.com/elementor/elementor-editor-packages/commit/42572c7a5d9769e32b61bd74ebbd1ed0ae94a368))
+
+
+
+
+
 # [0.6.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.5.0...@elementor/re-styled@0.6.0) (2021-08-18)
 
 
