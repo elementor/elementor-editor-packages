@@ -1,3 +1,3 @@
-export default () => {
-	return (<p>ROTEM</p>);
-};
+export default function Test() {
+	return (<p>Test Component</p>);
+}
