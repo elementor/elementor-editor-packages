@@ -1,14 +1,14 @@
 import { themeColors, selectors } from 'utils';
 
+const { base, dark } = selectors;
+
 export default {
 	heading: {
-		default: `
+		[ base ]: `
 			color: blue;
 		`,
 		h1: `
 			--color: ${ themeColors( 'primary' ) };
-			color: var(--color);
-			--start-spacing: 90px;
 		`,
 		h2: `
 			color: ${ themeColors( 'info' ) };
@@ -18,7 +18,7 @@ export default {
 			}
 		`,
 	},
-	[ selectors.dark ]: {
+	[ dark ]: {
 		heading: {
 			h1: `
 				--color: ${ themeColors( 'info' ) };

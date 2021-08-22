@@ -17,6 +17,7 @@ export const tints = ( key ) => {
 };
 
 export const selectors = {
+	base: '_base',
 	dark: '.eps-theme-dark',
 };
 
@@ -40,15 +41,22 @@ export const bindProps = ( data ) => {
 	return data.map( ( obj ) => bindProp( obj ) );
 };
 
-export const getVariant = ( key = 'default', variants ) => {
-	const componentName = Object.keys( variants )[ 0 ];
+export const getVariant = ( name, variants ) => {
+	const componentName = Object.keys( variants )[ 0 ],
+		keys = [ selectors.base, name ];
 
-	let style = variants[ componentName ][ key ];
+	let style = '';
+
+	keys.forEach( ( key ) => {
+		style += variants[ componentName ]?.[ key ] || '';
+	} );
 
 	// Dark mode.
 	// TODO: read from a proper source.
 	if ( document.body.classList.contains( 'eps-theme-dark' ) ) {
-		style += variants[ selectors.dark ][ componentName ][ key ];
+		keys.forEach( ( key ) => {
+			style += variants[ selectors.dark ]?.[ componentName ]?.[ key ] || '';
+		} );
 	}
 
 	return css`${ style }`;
