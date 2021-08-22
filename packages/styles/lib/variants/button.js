@@ -1,6 +1,6 @@
 const { themeColors } = require( '../index' );
 
-module.exports = {
+exports.button = {
 	button: {
 		default: `
 			display: inline-flex;

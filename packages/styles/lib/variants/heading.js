@@ -2,7 +2,7 @@ const { themeColors, selectors } = require( '../index' );
 
 const { base, dark } = selectors;
 
-module.exports = {
+exports.heading = {
 	heading: {
 		[ base ]: `
 			color: var(--color);
