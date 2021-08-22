@@ -1,1 +1,1 @@
-export { default as RandomButton } from './components/test';
+export * from './components';
