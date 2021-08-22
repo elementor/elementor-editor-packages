@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { getVariant } from 'utils';
-import { heading } from '@elementor/styles/variants';
+import { heading } from '@elementor/styles/variants/heading';
 
 window.console.log( '--- heading variants2', heading );
 
