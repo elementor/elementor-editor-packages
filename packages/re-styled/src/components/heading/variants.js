@@ -5,13 +5,13 @@ const { base, dark } = selectors;
 export default {
 	heading: {
 		[ base ]: `
-			color: blue;
+			color: var(--color);
 		`,
 		h1: `
 			--color: ${ themeColors( 'primary' ) };
 		`,
 		h2: `
-			color: ${ themeColors( 'info' ) };
+			--color: ${ themeColors( 'danger' ) };
 
 			@media screen and (max-width: 960px) {
 				color: blue;
