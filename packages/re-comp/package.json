@@ -1,6 +1,7 @@
 {
   "name": "@elementor/re-comp",
   "version": "0.9.0",
+  "private": false,
   "description": "",
   "author": "Elementor Team",
   "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/e-components#readme",
