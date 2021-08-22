@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.14.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.13.0...@elementor/re-styled@0.14.0) (2021-08-22)
+
+
+### Features
+
+* **re-styled:** adding theme to button ([66e0d2a](https://github.com/elementor/elementor-editor-packages/commit/66e0d2a3fc4f6ccf5106232422f3993937c44fa0))
+
+
+
+
+
 # [0.13.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.12.0...@elementor/re-styled@0.13.0) (2021-08-22)
 
 
