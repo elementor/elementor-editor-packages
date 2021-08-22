@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import { getVariant } from 'utils';
-import { default as Rotem } from '@elementor/styles';
+import { default as Rotem } from '@elementor/styles/variants/heading';
 
 window.console.log( '--- heading variants3', Rotem );
 

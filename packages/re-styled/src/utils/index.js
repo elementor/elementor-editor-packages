@@ -1,5 +1,5 @@
 import { css } from 'styled-components';
-import { selectors } from 'styles';
+import { selectors } from '@elementor/styles';
 
 const bindProp = ( obj ) => {
 	const [ key, value ] = Object.entries( obj )[ 0 ];
