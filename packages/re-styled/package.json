@@ -1,6 +1,6 @@
 {
   "name": "@elementor/re-styled",
-  "version": "0.28.0",
+  "version": "0.28.1",
   "private": false,
   "description": "",
   "author": "Elementor Team",
@@ -28,7 +28,7 @@
     "@babel/core": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
     "@babel/preset-react": "^7.0.0",
-    "@elementor/styles": "^0.28.0",
+    "@elementor/styles": "^0.29.0",
     "babel-loader": "^8.0.5",
     "prop-types": "^15.7.2",
     "react": "^16.7.0",
