@@ -42,9 +42,9 @@ export const bindProps = ( data ) => {
 	return data.map( ( obj ) => bindProp( obj ) );
 };
 
-export const getVariant = ( variant, propValue ) => {
-	const variantData = variant,
-		variantName = variant.toLowerCase(),
+export const getVariant = ( propValue, variants ) => {
+	const variantData = variants,
+		variantName = propValue.toLowerCase(),
 		variantObj = variantData[ variantName ];
 
 	if ( ! variantObj ) {
@@ -55,7 +55,7 @@ export const getVariant = ( variant, propValue ) => {
 		ltrObj = variantData[ selectors.ltr ][ variantName ],
 		rtlObj = variantData[ selectors.rtl ][ variantName ],
 		isDarkMode = document.body.classList.contains( 'eps-theme-dark' ), // TODO: read from a proper source
-		isRtlMode = 'rtl' === getComputedStyle( document.body ).direction; // TODO: read from a proper source
+		isRtlMode = 'rtl' === window.getComputedStyle( document.body ).direction; // TODO: read from a proper source
 
 	if ( ! propValue ) {
 		let defaultStyle = '';
