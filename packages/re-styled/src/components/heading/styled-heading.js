@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 import { getVariant } from 'utils';
-import variants from './variants';
+import variants from 'variants/heading';
+
+window.console.log( '--- heading variants', variants );
 
 const Heading = styled.h1`
 	${ ( props ) => getVariant( props.variant, variants ) }
