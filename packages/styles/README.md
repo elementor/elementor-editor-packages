@@ -1,3 +1,3 @@
-# RE STYLED
+# STYLES
 
-> Styled Components.
+> Elementor Styles.
