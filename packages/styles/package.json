@@ -8,9 +8,11 @@
   "license": "GPL-3.0-or-later",
   "main": "lib/index.js",
   "files": [
-    "lib",
-    "lib/variants"
+    "lib"
   ],
+  "exports": {
+    "./variants": "lib/variants"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elementor/elementor-editor-packages.git"

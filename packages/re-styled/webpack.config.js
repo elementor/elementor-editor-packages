@@ -9,7 +9,6 @@ module.exports = {
 			'utils': path.resolve( __dirname, './src/utils/' ),
 			'theme': path.resolve( __dirname, './src/components/theme' ),
 			'styles': '@elementor/styles',
-			'variants': '@elementor/styles/variants',
 		},
 	},
 	output: {
