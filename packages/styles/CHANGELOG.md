@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# 0.18.0 (2021-08-22)
+
+
+### Features
+
+* **styles:** adding new package for the generic styles ([03a0214](https://github.com/elementor/elementor-editor-packages/commit/03a0214efac8000a6e3a4a49384892bab91f471b))
+
+
+
+
+
 # [0.17.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/re-styled@0.16.0...@elementor/re-styled@0.17.0) (2021-08-22)
 
 
