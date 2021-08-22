@@ -4,7 +4,7 @@
   "private": false,
   "description": "",
   "author": "Elementor Team",
-  "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/e-components#readme",
+  "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/re-comp#readme",
   "license": "GPL-3.0-or-later",
   "main": "lib/index.js",
   "files": [

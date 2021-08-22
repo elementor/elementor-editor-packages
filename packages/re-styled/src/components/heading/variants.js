@@ -1,4 +1,4 @@
-import { themeColors, selectors } from 'utils';
+import { themeColors, selectors } from '@elementor/styles';
 
 const { base, dark } = selectors;
 
