@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import { getVariant } from 'utils';
-import { default as Rotem } from '@elementor/styles/variants/heading';
+import heading from '@elementor/styles/variants/heading';
 
-window.console.log( '--- heading variants3', Rotem );
+window.console.log( '--- heading variants3', heading );
 
 const Heading = styled.h1`
 	${ ( props ) => getVariant( props.variant, {} ) }

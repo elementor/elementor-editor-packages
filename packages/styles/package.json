@@ -6,13 +6,12 @@
   "author": "Elementor Team",
   "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/styles#readme",
   "license": "GPL-3.0-or-later",
-  "main": "./src/index.js",
   "files": [
-    "src"
+    "lib"
   ],
   "exports": {
-    ".": "./src/index.js",
-    "./variants/heading": "./src/variants/heading.js"
+    ".": "./lib/index.js",
+    "./variants/heading": "./lib/variants/heading.js"
   },
   "repository": {
     "type": "git",
@@ -26,6 +25,5 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "type": "module"
+  }
 }
