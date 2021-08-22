@@ -18,8 +18,6 @@ export const tints = ( key ) => {
 
 export const selectors = {
 	dark: '.eps-theme-dark',
-	ltr: ':not([dir=rtl])',
-	rtl: '[dir=rtl]',
 };
 
 export const spacing = ( key ) => {
@@ -42,57 +40,16 @@ export const bindProps = ( data ) => {
 	return data.map( ( obj ) => bindProp( obj ) );
 };
 
-export const getVariant = ( propValue, variants ) => {
-	const variantData = variants,
-		variantName = propValue.toLowerCase(),
-		variantObj = variantData[ variantName ];
+export const getVariant = ( key = 'default', variants ) => {
+	const componentName = Object.keys( variants )[ 0 ];
 
-	if ( ! variantObj ) {
-		return '';
+	let style = variants[ componentName ][ key ];
+
+	// Dark mode.
+	// TODO: read from a proper source.
+	if ( document.body.classList.contains( 'eps-theme-dark' ) ) {
+		style += variants[ selectors.dark ][ componentName ][ key ];
 	}
 
-	const darkObj = variantData[ selectors.dark ][ variantName ],
-		ltrObj = variantData[ selectors.ltr ][ variantName ],
-		rtlObj = variantData[ selectors.rtl ][ variantName ],
-		isDarkMode = document.body.classList.contains( 'eps-theme-dark' ), // TODO: read from a proper source
-		isRtlMode = 'rtl' === window.getComputedStyle( document.body ).direction; // TODO: read from a proper source
-
-	if ( ! propValue ) {
-		let defaultStyle = '';
-
-		defaultStyle += variantObj.default;
-
-		if ( isDarkMode && darkObj ) {
-			defaultStyle += darkObj.default;
-		}
-
-		if ( isRtlMode && rtlObj ) {
-			defaultStyle += rtlObj.default;
-		} else if ( ltrObj ) {
-			defaultStyle += ltrObj.default;
-		}
-
-		return defaultStyle;
-	}
-
-	const variantStyle = variantObj?.[ propValue ],
-		darkStyle = darkObj?.[ propValue ],
-		ltrStyle = ltrObj?.[ propValue ],
-		rtlStyle = rtlObj?.[ propValue ];
-
-	if ( variantStyle ) {
-		let cssString = variantStyle;
-
-		if ( isDarkMode && darkStyle ) {
-			cssString += darkStyle;
-		}
-
-		if ( isRtlMode && rtlStyle ) {
-			cssString += rtlStyle;
-		} else if ( ltrStyle ) {
-			cssString += ltrStyle;
-		}
-
-		return css`${ cssString }`;
-	}
+	return css`${ style }`;
 };
