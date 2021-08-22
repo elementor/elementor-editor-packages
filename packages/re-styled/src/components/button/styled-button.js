@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 import Theme from 'theme';
-import { themeColors } from 'utils';
+import { themeColors } from 'styles';
 
 const defaultTheme = {
 	backgroundColor: themeColors( 'info' ),

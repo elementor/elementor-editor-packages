@@ -1,4 +1,4 @@
-import { themeColors } from 'utils';
+import { themeColors } from 'styles';
 
 export default {
 	button: {
