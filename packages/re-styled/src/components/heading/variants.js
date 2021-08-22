@@ -1,6 +1,8 @@
-import { themeColors, selectors } from '@elementor/styles';
+import { themeColors, selectors } from 'styles';
 
 const { base, dark } = selectors;
+
+console.log( 'from variants of re-styles', themeColors );
 
 export default {
 	heading: {
