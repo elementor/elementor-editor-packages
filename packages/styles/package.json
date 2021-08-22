@@ -11,8 +11,8 @@
     "lib"
   ],
   "exports": {
-    ".": "lib/index.js",
-    "./variants/*": "lib/variants/*.js"
+    ".": "./lib/index.js",
+    "./variants/*": "./lib/variants/*.js"
   },
   "repository": {
     "type": "git",
