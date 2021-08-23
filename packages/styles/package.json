@@ -11,7 +11,7 @@
   ],
   "exports": {
     ".": "./lib/index.js",
-    "./variants/heading": "./lib/variants/heading.js"
+    "./variants/*": "./lib/variants/*.js"
   },
   "repository": {
     "type": "git",
@@ -25,24 +25,5 @@
   },
   "scripts": {
     "test": "echo \"Error: run tests from root\" && exit 1"
-  },
-  "type": "module",
-  "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.3.1",
-    "@babel/preset-react": "^7.0.0",
-    "babel-loader": "^8.0.5",
-    "prop-types": "^15.7.2",
-    "react": "^16.7.0",
-    "react-dom": "^16.7.0",
-    "styled-components": "^5.3.0",
-    "webpack": "^4.29.0",
-    "webpack-cli": "^3.2.1"
-  },
-  "peerDependencies": {
-    "prop-types": ">=15.7.2",
-    "react": ">=16.7.0",
-    "react-dom": ">=16.7.0",
-    "styled-components": ">=5.3.0"
   }
 }
