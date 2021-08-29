@@ -44,6 +44,6 @@
     "styled-components": ">=5.3.0"
   },
   "dependencies": {
-    "@elementor/styles": "^0.40.0"
+    "@elementor/styles": "^0.43.0"
   }
 }
