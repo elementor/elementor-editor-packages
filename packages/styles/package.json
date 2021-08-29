@@ -6,6 +6,7 @@
   "author": "Elementor Team",
   "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/re-styled#readme",
   "license": "GPL-3.0-or-later",
+  "main": "lib/index.js",
   "files": [
     "lib",
     "src/variants"
