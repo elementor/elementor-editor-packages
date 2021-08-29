@@ -1,6 +1,6 @@
 {
   "name": "@elementor/re-styled",
-  "version": "0.43.0",
+  "version": "0.44.0",
   "private": false,
   "description": "",
   "author": "Elementor Team",
@@ -44,6 +44,6 @@
     "styled-components": ">=5.3.0"
   },
   "dependencies": {
-    "@elementor/styles": "^0.45.0"
+    "@elementor/styles": "^0.46.0"
   }
 }
