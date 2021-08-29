@@ -8,7 +8,7 @@
   "license": "GPL-3.0-or-later",
   "files": [
     "lib",
-    "src"
+    "src/variants"
   ],
   "exports": {
     ".": "./lib/index.js",
