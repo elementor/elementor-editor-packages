@@ -8,7 +8,6 @@ module.exports = {
 		alias: {
 			'utils': path.resolve( __dirname, './src/utils/' ),
 			'theme': path.resolve( __dirname, './src/components/theme' ),
-			'styles': '@elementor/styles',
 		},
 	},
 	output: {

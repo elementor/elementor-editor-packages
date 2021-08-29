@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { getVariant } from 'utils';
-import variants from '@elementor/styles/variants/heading';
 
 const Heading = styled.h1`
-	${ ( props ) => getVariant( props.variant, variants ) }
+	${ ( props ) => getVariant( props.variant, {} ) }
 `;
 
 export const StyledHeading = ( props ) => (
