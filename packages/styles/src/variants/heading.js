@@ -1,6 +1,11 @@
 const { themeColors, selectors } = require( '../index' );
 
+console.log( 'themeColors', themeColors );
+console.log( 'selectors', selectors );
+
 const { base, dark } = selectors;
+
+console.log( 'base', base );
 
 module.exports = {
 	heading: {
