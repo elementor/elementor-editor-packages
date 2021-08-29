@@ -40,5 +40,8 @@
     "prop-types": ">=15.7.2",
     "react": ">=16.7.0",
     "react-dom": ">=16.7.0"
+  },
+  "dependencies": {
+    "@elementor/styles": "^0.32.0"
   }
 }

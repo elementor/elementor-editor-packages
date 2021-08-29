@@ -1,5 +1,4 @@
 import styled, { css } from 'styled-components';
-import { spacing, bindProps } from 'styles';
 
 const Grid = styled.div`
 	${ ( props ) => props.container && css`
