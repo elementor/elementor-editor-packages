@@ -1,3 +1,0 @@
-# RE STYLED
-
-> Styled Components.
