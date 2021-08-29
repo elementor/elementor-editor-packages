@@ -1,1 +1,4 @@
-export * from './maps/breakpoints/breakpoints.js';
+export default {
+	a: '1',
+	b: '2'
+}
