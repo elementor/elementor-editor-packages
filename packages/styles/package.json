@@ -7,7 +7,8 @@
   "homepage": "https://github.com/elementor/elementor-editor-packages/tree/master/packages/re-styled#readme",
   "license": "GPL-3.0-or-later",
   "files": [
-    "lib"
+    "lib",
+    "src"
   ],
   "exports": {
     ".": "./lib/index.js",
