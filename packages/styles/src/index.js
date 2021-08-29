@@ -23,3 +23,5 @@ exports.selectors = {
 exports.spacing = ( key ) => {
 	return spacingMap.values[ key ] && ( spacingMap.values[ key ] * spacingMap.base.spacer ) + spacingMap.base.units;
 };
+
+exports.heading = require( './variants/heading' );
