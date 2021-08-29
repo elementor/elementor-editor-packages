@@ -9,7 +9,7 @@ module.exports = {
 	},
 	output: {
 		filename: 'index.js',
-		library: '@elementor/e-styles',
+		library: '@elementor/styles',
 		libraryTarget: 'umd',
 		path: path.resolve( __dirname, 'lib' ),
 	},
@@ -22,7 +22,7 @@ module.exports = {
 					{
 						loader: 'babel-loader',
 						options: {
-							presets: [ [ '@babel/preset-env', { "useBuiltIns": "usage", "corejs": 3 } ] ],
+							presets: [ [ '@babel/preset-env', { "useBuiltIns": "usage", "corejs": 3 } ], '@babel/preset-react' ],
 						},
 					},
 				],

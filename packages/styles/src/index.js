@@ -1,9 +1,7 @@
 const breakpointsMap = require( './maps/breakpoints/breakpoints.js' );
 const themeColorsMap = require( './maps/colors/theme-colors' );
 const tintsMap = require( './maps/colors/tints' );
-import spacingMap from './maps/spacing/spacing';
-
-console.log( 'rotem456' );
+const spacingMap = require( './maps/spacing/spacing' );
 
 exports.breakpoints = breakpointsMap;
 
