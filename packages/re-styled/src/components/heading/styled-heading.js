@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { getVariant } from 'utils';
 import { heading } from '@elementor/styles';
 
-console.log( 'rotem22222', heading );
+console.log( '### rotem22222', heading );
 
 const Heading = styled.h1`
 	${ ( props ) => getVariant( props.variant, heading ) }
