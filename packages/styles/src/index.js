@@ -15,7 +15,7 @@ export const tints = ( key ) => {
 
 export const selectors = {
 	base: '_base',
-		dark: '.eps-theme-dark',
+	dark: '.eps-theme-dark',
 };
 
 export const spacing = ( key ) => {

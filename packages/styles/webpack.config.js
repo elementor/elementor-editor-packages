@@ -4,8 +4,8 @@ const path = require( 'path' );
 module.exports = {
 	mode: 'production',
 	entry: {
-		index: path.resolve( __dirname, './src/index.js' ),
-		variants: path.resolve( __dirname, './src/variants' ),
+		'./index': path.resolve( __dirname, './src/index.js' ),
+		'/variants/index': path.resolve( __dirname, './src/variants' ),
 	},
 	resolve: {
 		alias: {},
