@@ -3,7 +3,7 @@ const themeColorsMap = require( './maps/colors/theme-colors' );
 const tintsMap = require( './maps/colors/tints' );
 const spacingMap = require( './maps/spacing/spacing' );
 
-console.log( 'rotem - index - styles ------------------------------- 444' );
+console.log( 'rotem - index - styles ------------------------------- 555' );
 
 console.log( 'breakpointsMap', breakpointsMap );
 
