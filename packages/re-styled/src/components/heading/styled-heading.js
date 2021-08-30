@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { default as Rotem } from '@elementor/styles';
-import { breakpoints } from '@elementor/styles';
+import breakpoints from '@elementor/styles';
 
-console.log( '### Rotem', Rotem );
-console.log( '### breakpoints - deconstruct', breakpoints );
+console.log( '### Rotem 2', Rotem );
+console.log( '### breakpoints 2 - deconstruct', breakpoints );
 
 const Heading = styled.h1`
-	color: orange;
+	color: red;
 `;
 
 export const StyledHeading = ( props ) => (
