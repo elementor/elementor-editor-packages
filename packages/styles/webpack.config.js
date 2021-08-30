@@ -3,12 +3,15 @@ const path = require( 'path' );
 
 module.exports = {
 	mode: 'production',
-	entry: './src/index.js',
+	entry: {
+		index: path.resolve( __dirname, './src/index.js' ),
+		variants: path.resolve( __dirname, './src/variants' ),
+	},
 	resolve: {
 		alias: {},
 	},
 	output: {
-		filename: 'index.js',
+		filename: '[name].js',
 		library: '@elementor/styles',
 		libraryTarget: 'umd',
 		path: path.resolve( __dirname, 'lib' ),
