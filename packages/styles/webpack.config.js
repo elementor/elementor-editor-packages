@@ -4,7 +4,7 @@ const path = require( 'path' );
 module.exports = {
 	mode: 'production',
 	entry: {
-		'./index': path.resolve( __dirname, './src/index.js' ),
+		'./lib/index': path.resolve( __dirname, './src/index.js' ),
 		'/variants/index': path.resolve( __dirname, './src/variants' ),
 	},
 	resolve: {
@@ -14,7 +14,7 @@ module.exports = {
 		filename: '[name].js',
 		library: '@elementor/styles',
 		libraryTarget: 'umd',
-		path: path.resolve( __dirname, 'lib' ),
+		path: path.resolve( __dirname, './' ),
 	},
 	module: {
 		rules: [
