@@ -1,7 +1,2 @@
-import heading from './heading';
-import button from './button';
-
-export default {
-	heading,
-	button,
-}
+export { default as heading } from './heading';
+export { default as button } from './button';
