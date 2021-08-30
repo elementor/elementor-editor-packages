@@ -1,6 +1,6 @@
 {
   "name": "@elementor/styles",
-  "version": "0.65.0",
+  "version": "0.66.0",
   "private": false,
   "description": "",
   "author": "Elementor Team",
@@ -14,7 +14,6 @@
     ".": "./lib/index.js",
     "./variants": "./lib/variants.js"
   },
-
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elementor/elementor-editor-packages.git"
@@ -49,6 +48,6 @@
     "styled-components": ">=5.3.0"
   },
   "dependencies": {
-    "@elementor/styles": "^0.65.0"
+    "@elementor/styles": "^0.66.0"
   }
 }
