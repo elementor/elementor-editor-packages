@@ -4,9 +4,9 @@ import { default as rotem } from '@elementor/styles';
 import * as rotem2 from '@elementor/styles';
 import breakpoints from '@elementor/styles';
 
-console.log( '### rotem777', rotem );
-console.log( '### rotem888-2', rotem2 );
-console.log( '### breakpoints', breakpoints );
+console.log( '### rotem888', rotem );
+console.log( '### rotem999-2', rotem2 );
+console.log( '### breakpoints2', breakpoints );
 
 const Heading = styled.h1`
 	${ ( props ) => getVariant( props.variant, {} ) }
