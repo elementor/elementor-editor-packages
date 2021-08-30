@@ -1,6 +1,4 @@
-const { themeColors } = require( '../index' );
-
-module.exports = {
+export default {
 	button: {
 		default: `
 			display: inline-flex;
@@ -16,14 +14,6 @@ module.exports = {
 			`,
 			outlined: `
 				text-decoration: underline;
-			`,
-		},
-		color: {
-			primary: `
-				background-color: ${ themeColors( 'primary' ) };
-			`,
-			secondary: `
-				background-color: ${ themeColors( 'info' ) };
 			`,
 		},
 	},

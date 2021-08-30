@@ -1,7 +1,4 @@
 import styled from 'styled-components';
-import { breakpoints } from '@elementor/styles';
-
-console.log( '### breakpoints 999 - deconstruct', breakpoints );
 
 const Heading = styled.h1`
 	color: aqua;

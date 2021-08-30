@@ -1,32 +1,19 @@
-const { themeColors, selectors } = require( '../index' );
-
-console.log( 'themeColors', themeColors );
-console.log( 'selectors', selectors );
-
-const { base, dark } = selectors;
-
-console.log( 'base', base );
-
-module.exports = {
+export default {
 	heading: {
-		[ base ]: `
-			color: var(--color);
+		default: `
+			display: inline-flex;
+			font-size: 16px;
+			font-weight: bold;
+			line-height: 1;
+			cursor: pointer;
 		`,
-		h1: `
-			--color: ${ themeColors( 'primary' ) };
-		`,
-		h2: `
-			--color: ${ themeColors( 'danger' ) };
-
-			@media screen and (max-width: 960px) {
-				color: blue;
-			}
-		`,
-	},
-	[ dark ]: {
-		heading: {
-			h1: `
-				--color: ${ themeColors( 'info' ) };
+		variant: {
+			contained: `
+				padding: 30px;
+				border-radius: 5px;
+			`,
+			outlined: `
+				text-decoration: underline;
 			`,
 		},
 	},
