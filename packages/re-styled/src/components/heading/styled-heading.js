@@ -1,7 +1,7 @@
 import styled from 'styled-components';
-import data from '@elementor/styles';
+import { default as data } from '@elementor/styles';
 
-console.log( '### breakpoints 555 - deconstruct', data );
+console.log( '### breakpoints 888 - deconstruct', data );
 
 const Heading = styled.h1`
 	color: red;
