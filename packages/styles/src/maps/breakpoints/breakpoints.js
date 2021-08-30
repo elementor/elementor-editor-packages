@@ -1,5 +1,3 @@
-const breakpoints = require( '../../data/breakpoints/breakpoints.json' );
+import breakpoints from '../../data/breakpoints/breakpoints.json';
 
-console.log( 'breakpoints222', breakpoints );
-
-module.exports = breakpoints;
+export default breakpoints;

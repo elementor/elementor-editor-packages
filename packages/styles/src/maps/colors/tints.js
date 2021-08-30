@@ -1,6 +1,6 @@
-const palette = require( '../../data/colors/palette.json' );
+import palette from '../../data/colors/palette.json';
 
-module.exports = {
+export default {
 	'800': palette[ 'gray-lamp-post' ],
 	'700': palette[ 'gray-blue-planet' ],
 	'600': palette[ 'gray-sheffield' ],

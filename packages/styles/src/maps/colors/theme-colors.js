@@ -1,6 +1,6 @@
-const palette = require( '../../data/colors/palette.json' );
+import palette from '../../data/colors/palette.json';
 
-module.exports = {
+export default {
 	'text-muted': palette[ 'gray-hidden-creek' ],
 	disabled: palette[ 'gray-stone-golem' ],
 	light: palette.white,

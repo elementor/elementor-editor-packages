@@ -1,3 +1,3 @@
-const spacing = require( '../../data/spacing/spacing.json' );
+import spacing from '../../data/spacing/spacing.json';
 
-module.exports = spacing;
+export default spacing;
