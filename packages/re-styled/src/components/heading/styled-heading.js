@@ -5,8 +5,8 @@ import * as rotem2 from '@elementor/styles';
 import breakpoints from '@elementor/styles';
 
 console.log( '### rotem888', rotem );
-console.log( '### rotem999-2', rotem2 );
-console.log( '### breakpoints2', breakpoints );
+console.log( '### rotem999-3', rotem2 );
+console.log( '### breakpoints3', breakpoints );
 
 const Heading = styled.h1`
 	${ ( props ) => getVariant( props.variant, {} ) }
