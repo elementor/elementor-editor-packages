@@ -1,5 +1,4 @@
 import styled from 'styled-components';
-import { getVariant } from 'utils';
 import { default as rotem } from '@elementor/styles';
 import * as rotem2 from '@elementor/styles';
 import breakpoints from '@elementor/styles';
@@ -9,7 +8,7 @@ console.log( '### rotem1-3', rotem2 );
 console.log( '### breakpoints1', breakpoints );
 
 const Heading = styled.h1`
-	${ ( props ) => getVariant( props.variant, {} ) }
+	color: blue;
 `;
 
 export const StyledHeading = ( props ) => (
