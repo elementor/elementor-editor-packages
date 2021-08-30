@@ -12,7 +12,7 @@
   ],
   "exports": {
     ".": "./lib/index.js",
-    "./variants": "./lib/variants.js"
+    "./": "./lib/"
   },
   "repository": {
     "type": "git",
