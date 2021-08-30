@@ -10,6 +10,10 @@
   "files": [
     "lib"
   ],
+  "exports": {
+    ".": "./lib/index.js",
+    "./variants/*": "./lib/variants/*.js"
+  },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/elementor/elementor-editor-packages.git"
