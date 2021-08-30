@@ -1,10 +1,10 @@
 import styled from 'styled-components';
-import { default as data } from '@elementor/styles';
+import { breakpoints } from '@elementor/styles';
 
-console.log( '### breakpoints 888 - deconstruct', data );
+console.log( '### breakpoints 999 - deconstruct', breakpoints );
 
 const Heading = styled.h1`
-	color: red;
+	color: aqua;
 `;
 
 export const StyledHeading = ( props ) => (
