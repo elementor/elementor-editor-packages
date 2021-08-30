@@ -3,6 +3,8 @@ const themeColorsMap = require( './maps/colors/theme-colors' );
 const tintsMap = require( './maps/colors/tints' );
 const spacingMap = require( './maps/spacing/spacing' );
 
+console.log( '1. rotem - index - styles ------------------------------- 888', data );
+
 const data = {
 	breakpoints: breakpointsMap,
 	themeColors: ( key ) => {
@@ -20,6 +22,6 @@ const data = {
 	}
 };
 
-console.log( 'rotem - index - styles ------------------------------- 888', data );
+console.log( '2. rotem - index - styles ------------------------------- 888', data );
 
 module.exports = data;
