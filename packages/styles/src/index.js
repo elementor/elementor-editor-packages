@@ -3,7 +3,9 @@ const themeColorsMap = require( './maps/colors/theme-colors' );
 const tintsMap = require( './maps/colors/tints' );
 const spacingMap = require( './maps/spacing/spacing' );
 
-console.log( 'rotem - index - styles ------------------------------- 333' );
+console.log( 'rotem - index - styles ------------------------------- 444' );
+
+console.log( 'breakpointsMap', breakpointsMap );
 
 exports.breakpoints = breakpointsMap;
 
@@ -23,5 +25,3 @@ exports.selectors = {
 exports.spacing = ( key ) => {
 	return spacingMap.values[ key ] && ( spacingMap.values[ key ] * spacingMap.base.spacer ) + spacingMap.base.units;
 };
-
-exports.heading = require( './variants/heading' );
