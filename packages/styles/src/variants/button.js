@@ -1,21 +1,18 @@
+import { themeColors, selectors } from 'styles';
+
+const { base } = selectors;
+
+
 export default {
 	button: {
-		default: `
+		[ base ]: `
 			display: inline-flex;
 			font-size: 16px;
 			font-weight: bold;
 			line-height: 1;
 			cursor: pointer;
-			border-color: amazon;
+			background-color: ${ themeColors( 'primary' ) };
+			color: #fff;
 		`,
-		variant: {
-			contained: `
-				padding: 30px;
-				border-radius: 5px;
-			`,
-			outlined: `
-				text-decoration: underline;
-			`,
-		},
-	},
+	}
 };

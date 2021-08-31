@@ -8,7 +8,10 @@ module.exports = {
 		'/variants/index': path.resolve( __dirname, './src/variants' ),
 	},
 	resolve: {
-		alias: {},
+		alias: {
+			styles: path.resolve( __dirname, './src/index.js' ),
+			variants: path.resolve( __dirname, './src/variants/index.js' ),
+		},
 	},
 	output: {
 		filename: '[name].js',

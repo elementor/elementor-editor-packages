@@ -1,18 +1,30 @@
-import { themeColors } from '../index';
+import { themeColors, selectors } from 'styles';
+
+const { base, dark } = selectors;
 
 export default {
 	heading: {
-		default: `
-			display: inline-flex;
-			font-size: 17px;
-			font-weight: bold;
-			line-height: 1;
-			cursor: pointer;
-			border-color: grey;
-			color: ${ themeColors( 'info' ) };
+		[ base ]: `
+			color: #ccc;
 		`,
 		h1: `
-			color: ${ themeColors( 'primary' ) };
+			--color: ${ themeColors( 'primary' ) };
+			color: var(--color);
+			--start-spacing: 90px;
 		`,
+		h2: `
+			color: ${ themeColors( 'info' ) };
+
+			@media screen and (max-width: 960px) {
+				color: blue;
+			}
+		`,
+	},
+	[ dark ]: {
+		heading: {
+			h1: `
+				--color: ${ themeColors( 'warning' ) };
+			`,
+		}
 	},
 };
