@@ -2,8 +2,8 @@ import styled from 'styled-components';
 import { heading } from '@elementor/styles/variants';
 import { themeColors } from '@elementor/styles';
 
-console.log( '### variants 123', heading );
-console.log( '### themeColors', themeColors( 'primary' ) );
+console.log( '### variants 1234', heading );
+console.log( '### themeColors 111', themeColors( 'primary' ) );
 
 const Heading = styled.h1`
 	color: aqua;
