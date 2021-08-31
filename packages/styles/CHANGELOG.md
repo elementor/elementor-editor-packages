@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.75.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/styles@0.74.0...@elementor/styles@0.75.0) (2021-08-31)
+
+
+### Features
+
+* **test:** testing ([ef3f964](https://github.com/elementor/elementor-editor-packages/commit/ef3f964db37837685ca6dfd549684122210bf880))
+
+
+
+
+
 # [0.74.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/styles@0.73.0...@elementor/styles@0.74.0) (2021-08-31)
 
 
