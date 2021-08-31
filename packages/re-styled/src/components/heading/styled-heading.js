@@ -6,7 +6,7 @@ console.log( '### variants 1234', heading );
 console.log( '### themeColors 111', themeColors( 'primary' ) );
 
 const Heading = styled.h1`
-	color: aqua;
+	color: red;
 `;
 
 export const StyledHeading = ( props ) => (
