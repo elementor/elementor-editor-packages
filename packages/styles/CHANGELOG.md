@@ -3,6 +3,17 @@
 All notable changes to this project will be documented in this file.
 See [Conventional Commits](https://conventionalcommits.org) for commit guidelines.
 
+# [0.78.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/styles@0.77.0...@elementor/styles@0.78.0) (2021-08-31)
+
+
+### Features
+
+* **styles:** creating common-js version for generating static css in the future ([1a83f35](https://github.com/elementor/elementor-editor-packages/commit/1a83f35fd1ea10a3e4283e3de0ae26d26d776936))
+
+
+
+
+
 # [0.77.0](https://github.com/elementor/elementor-editor-packages/compare/@elementor/styles@0.76.0...@elementor/styles@0.77.0) (2021-08-31)
 
 
