@@ -6,6 +6,7 @@ export default {
 			font-weight: bold;
 			line-height: 1;
 			cursor: pointer;
+			border-color: amazon;
 		`,
 		variant: {
 			contained: `
