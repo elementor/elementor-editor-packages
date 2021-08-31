@@ -6,11 +6,11 @@ import spacingMap from './maps/spacing/spacing';
 export const breakpoints = breakpointsMap;
 
 export const themeColors = ( key ) => {
-	return themeColorsMap[ key ].hex;
+	return themeColorsMap[ key ] && themeColorsMap[ key ].hex;
 };
 
 export const tints = ( key ) => {
-	return tintsMap[ key ].hex;
+	return tintsMap[ key ] && tintsMap[ key ].hex;
 };
 
 export const selectors = {

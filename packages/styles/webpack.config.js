@@ -1,7 +1,7 @@
 const webpack = require( 'webpack' );
 const path = require( 'path' );
 
-module.exports = {
+const libraryConfig = {
 	mode: 'production',
 	entry: {
 		'./lib/index': path.resolve( __dirname, './src/index.js' ),
@@ -51,3 +51,45 @@ module.exports = {
 		}
 	}
 };
+
+const commonConfig = {
+	mode: 'production',
+	entry: {
+		styles: path.resolve( __dirname, './src/index.js' ),
+		variants: path.resolve( __dirname, './src/variants' ),
+	},
+	resolve: {
+		alias: {
+			styles: path.resolve( __dirname, './src/index.js' ),
+			variants: path.resolve( __dirname, './src/variants/index.js' ),
+		},
+	},
+	output: {
+		filename: '[name].js',
+		path: path.resolve( __dirname, './common' ),
+		libraryTarget: 'commonjs2',
+	},
+	module: {
+		rules: [
+			{
+				test: /\.(js|jsx)$/,
+				exclude: /node_modules/,
+				use: [
+					{
+						loader: 'babel-loader',
+						options: {
+							plugins: [
+								[ '@babel/plugin-transform-modules-commonjs', { importInterop: 'babel', allowTopLevelThis: true } ]
+							]
+						},
+					},
+				],
+			},
+		],
+	},
+};
+
+module.exports = [
+	libraryConfig,
+	commonConfig
+];
