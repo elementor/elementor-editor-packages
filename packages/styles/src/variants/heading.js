@@ -1,6 +1,12 @@
 import { themeColors, selectors } from 'styles';
 
+console.log( 'themeColors', themeColors );
+console.log( 'selectors', selectors );
+
 const { base, dark } = selectors;
+
+console.log( 'base', base );
+console.log( 'dark', dark );
 
 export default {
 	heading: {
