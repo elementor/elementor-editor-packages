@@ -1,12 +1,9 @@
 import styled from 'styled-components';
+import { getVariant } from 'utils';
 import { heading } from '@elementor/styles/variants';
-import { themeColors } from '@elementor/styles';
-
-console.log( '### variants 1234', heading );
-console.log( '### themeColors 111', themeColors( 'primary' ) );
 
 const Heading = styled.h1`
-	color: yellow;
+	${ ( props ) => getVariant( props.variant, heading ) }
 `;
 
 export const StyledHeading = ( props ) => (
