@@ -9,7 +9,7 @@ export default {
 			line-height: 1;
 			cursor: pointer;
 			border-color: grey;
-			color: ${ themeColors( 'secondary' ) };
+			color: ${ themeColors( 'info' ) };
 		`,
 		h1: `
 			color: ${ themeColors( 'primary' ) };
