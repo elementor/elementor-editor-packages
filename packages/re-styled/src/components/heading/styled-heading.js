@@ -1,9 +1,12 @@
 import styled from 'styled-components';
 import { getVariant } from 'utils';
-import { heading } from '@elementor/styles/variants';
+import variants, { dark } from '@elementor/styles/variants/heading';
+
+console.log( 'variants', variants );
+console.log( 'dark', dark );
 
 const Heading = styled.h1`
-	${ ( props ) => getVariant( props.variant, heading ) }
+	${ ( props ) => getVariant( props.variant, {} ) }
 `;
 
 export const StyledHeading = ( props ) => (
