@@ -18,3 +18,7 @@
 // 		//write.sync( widgetScssRtlFileDest, this.getWidgetScssContent( widgetName, 'rtl' ) );
 // 	} );
 // }
+
+// const variants = require( '../common/variants.js' );
+//
+// console.log( '*************** variants', variants );
