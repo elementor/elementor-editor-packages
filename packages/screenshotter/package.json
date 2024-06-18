@@ -20,7 +20,7 @@
 		"src"
 	],
 	"dependencies": {
-		"backstopjs": "^5.0.7",
+		"backstopjs": "^6.3.12",
 		"chalk": "^4.0.0",
 		"minimist": "^1.2.1",
 		"shelljs": "^0.8.4"
